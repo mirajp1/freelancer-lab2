@@ -1,0 +1,489 @@
+["start",{"total":12}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+8
+{ days: 1, bid_amount: 50 }
+Executing (default): SELECT `id`, `bid_amount`, `days`, `createdAt`, `updatedAt`, `UserId`, `ProjectId` FROM `Bids` AS `Bid` WHERE `Bid`.`userId` = 1 AND `Bid`.`projectId` = '8' LIMIT 1;
+Executing (default): INSERT INTO `Bids` (`id`,`bid_amount`,`days`,`createdAt`,`updatedAt`,`UserId`,`ProjectId`) VALUES (DEFAULT,50,1,'2018-03-18 20:07:30','2018-03-18 20:07:30',1,'8');
+[0mPOST /api/projects/8/bid [33m400 [0m141.374 ms - 1255[0m
+["pass",{"title":"should return that bid was placed","fullTitle":"API endpoint /api/projects/bid should return that bid was placed","duration":172,"currentRetry":0}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+1
+{ days: 1, bid_amount: 50 }
+Executing (default): SELECT `id`, `bid_amount`, `days`, `createdAt`, `updatedAt`, `UserId`, `ProjectId` FROM `Bids` AS `Bid` WHERE `Bid`.`userId` = 1 AND `Bid`.`projectId` = '1' LIMIT 1;
+[0mPOST /api/projects/1/bid [33m400 [0m8.510 ms - 43[0m
+["pass",{"title":"should return can not place bid again on same project","fullTitle":"API endpoint /api/projects/bid should return can not place bid again on same project","duration":13,"currentRetry":0}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+{ name: 'Miraj Patel1' }
+undefined
+Executing (default): SELECT `Profile`.`id`, `Profile`.`phone`, `Profile`.`image`, `Profile`.`about`, `Profile`.`name`, `Profile`.`createdAt`, `Profile`.`updatedAt`, `Profile`.`puserId`, `Profile`.`UserId`, `puser`.`id` AS `puser.id`, `puser`.`email` AS `puser.email`, `puser`.`password` AS `puser.password`, `puser`.`userType` AS `puser.userType`, `puser`.`createdAt` AS `puser.createdAt`, `puser`.`updatedAt` AS `puser.updatedAt` FROM `Profiles` AS `Profile` LEFT OUTER JOIN `Users` AS `puser` ON `Profile`.`puserId` = `puser`.`id` WHERE `Profile`.`userId` = 1 LIMIT 1;
+Profile {
+  dataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:01:48.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false } },
+  _previousDataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:01:48.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false } },
+  _changed: {},
+  _modelOptions: 
+   { timestamps: true,
+     validate: {},
+     freezeTableName: false,
+     underscored: false,
+     underscoredAll: false,
+     paranoid: false,
+     rejectOnEmpty: false,
+     whereCollection: { userId: 1 },
+     schema: null,
+     schemaDelimiter: '',
+     defaultScope: {},
+     scopes: [],
+     indexes: [],
+     name: { plural: 'Profiles', singular: 'Profile' },
+     omitNull: false,
+     sequelize: 
+      Sequelize {
+        options: [Object],
+        config: [Object],
+        dialect: [Object],
+        queryInterface: [Object],
+        models: [Object],
+        modelManager: [Object],
+        connectionManager: [Object],
+        importCache: [Object],
+        test: [Object] },
+     hooks: {},
+     uniqueKeys: {} },
+  _options: 
+   { isNewRecord: false,
+     _schema: null,
+     _schemaDelimiter: '',
+     include: [ [Object] ],
+     includeNames: [ 'puser' ],
+     includeMap: { puser: [Object] },
+     includeValidated: true,
+     attributes: 
+      [ 'id',
+        'phone',
+        'image',
+        'about',
+        'name',
+        'createdAt',
+        'updatedAt',
+        'puserId',
+        'UserId' ],
+     raw: true },
+  __eagerlyLoadedAssociations: [],
+  isNewRecord: false,
+  puser: 
+   User {
+     dataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z },
+     _previousDataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z },
+     _changed: {},
+     _modelOptions: 
+      { timestamps: true,
+        validate: {},
+        freezeTableName: false,
+        underscored: false,
+        underscoredAll: false,
+        paranoid: false,
+        rejectOnEmpty: false,
+        whereCollection: [Object],
+        schema: null,
+        schemaDelimiter: '',
+        defaultScope: {},
+        scopes: [],
+        indexes: [],
+        name: [Object],
+        omitNull: false,
+        sequelize: [Object],
+        hooks: [Object],
+        uniqueKeys: [Object] },
+     _options: 
+      { isNewRecord: false,
+        _schema: null,
+        _schemaDelimiter: '',
+        include: undefined,
+        includeNames: undefined,
+        includeMap: undefined,
+        includeValidated: true,
+        raw: true,
+        attributes: undefined },
+     __eagerlyLoadedAssociations: [],
+     isNewRecord: false } }
+Executing (default): UPDATE `Profiles` SET `updatedAt`='2018-03-18 20:07:30' WHERE `id` = 1
+[0mPUT /api/profile [32m201 [0m60.681 ms - 430[0m
+["pass",{"title":"should update name","fullTitle":"API endpoint /api/projects/bid should update name","duration":65,"currentRetry":0}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+{}
+1
+Executing (default): SELECT `Project`.`id`, `Project`.`name`, `Project`.`description`, `Project`.`budget_range`, `Project`.`file`, `Project`.`createdAt`, `Project`.`updatedAt`, `Project`.`UserId`, `User`.`id` AS `User.id`, `User`.`email` AS `User.email`, `User`.`password` AS `User.password`, `User`.`userType` AS `User.userType`, `User`.`createdAt` AS `User.createdAt`, `User`.`updatedAt` AS `User.updatedAt`, `User->Profile`.`id` AS `User.Profile.id`, `User->Profile`.`phone` AS `User.Profile.phone`, `User->Profile`.`image` AS `User.Profile.image`, `User->Profile`.`about` AS `User.Profile.about`, `User->Profile`.`name` AS `User.Profile.name`, `User->Profile`.`createdAt` AS `User.Profile.createdAt`, `User->Profile`.`updatedAt` AS `User.Profile.updatedAt`, `User->Profile`.`puserId` AS `User.Profile.puserId`, `User->Profile`.`UserId` AS `User.Profile.UserId`, `User->Projects`.`id` AS `User.Projects.id`, `User->Projects`.`name` AS `User.Projects.name`, `User->Projects`.`description` AS `User.Projects.description`, `User->Projects`.`budget_range` AS `User.Projects.budget_range`, `User->Projects`.`file` AS `User.Projects.file`, `User->Projects`.`createdAt` AS `User.Projects.createdAt`, `User->Projects`.`updatedAt` AS `User.Projects.updatedAt`, `User->Projects`.`UserId` AS `User.Projects.UserId`, `User->Bids`.`id` AS `User.Bids.id`, `User->Bids`.`bid_amount` AS `User.Bids.bid_amount`, `User->Bids`.`days` AS `User.Bids.days`, `User->Bids`.`createdAt` AS `User.Bids.createdAt`, `User->Bids`.`updatedAt` AS `User.Bids.updatedAt`, `User->Bids`.`UserId` AS `User.Bids.UserId`, `User->Bids`.`ProjectId` AS `User.Bids.ProjectId`, `User->Skills`.`id` AS `User.Skills.id`, `User->Skills`.`name` AS `User.Skills.name`, `User->Skills`.`createdAt` AS `User.Skills.createdAt`, `User->Skills`.`updatedAt` AS `User.Skills.updatedAt`, `User->Skills->UserSkills`.`createdAt` AS `User.Skills.UserSkills.createdAt`, `User->Skills->UserSkills`.`updatedAt` AS `User.Skills.UserSkills.updatedAt`, `User->Skills->UserSkills`.`SkillId` AS `User.Skills.UserSkills.SkillId`, `User->Skills->UserSkills`.`UserId` AS `User.Skills.UserSkills.UserId`, `Skills`.`id` AS `Skills.id`, `Skills`.`name` AS `Skills.name`, `Skills`.`createdAt` AS `Skills.createdAt`, `Skills`.`updatedAt` AS `Skills.updatedAt`, `Skills->ProjectSkills`.`createdAt` AS `Skills.ProjectSkills.createdAt`, `Skills->ProjectSkills`.`updatedAt` AS `Skills.ProjectSkills.updatedAt`, `Skills->ProjectSkills`.`ProjectId` AS `Skills.ProjectSkills.ProjectId`, `Skills->ProjectSkills`.`SkillId` AS `Skills.ProjectSkills.SkillId`, `Bids`.`id` AS `Bids.id`, `Bids`.`bid_amount` AS `Bids.bid_amount`, `Bids`.`days` AS `Bids.days`, `Bids`.`createdAt` AS `Bids.createdAt`, `Bids`.`updatedAt` AS `Bids.updatedAt`, `Bids`.`UserId` AS `Bids.UserId`, `Bids`.`ProjectId` AS `Bids.ProjectId`, `Bids->User`.`id` AS `Bids.User.id`, `Bids->User`.`email` AS `Bids.User.email`, `Bids->User`.`password` AS `Bids.User.password`, `Bids->User`.`userType` AS `Bids.User.userType`, `Bids->User`.`createdAt` AS `Bids.User.createdAt`, `Bids->User`.`updatedAt` AS `Bids.User.updatedAt`, `Bids->User->Profile`.`id` AS `Bids.User.Profile.id`, `Bids->User->Profile`.`phone` AS `Bids.User.Profile.phone`, `Bids->User->Profile`.`image` AS `Bids.User.Profile.image`, `Bids->User->Profile`.`about` AS `Bids.User.Profile.about`, `Bids->User->Profile`.`name` AS `Bids.User.Profile.name`, `Bids->User->Profile`.`createdAt` AS `Bids.User.Profile.createdAt`, `Bids->User->Profile`.`updatedAt` AS `Bids.User.Profile.updatedAt`, `Bids->User->Profile`.`puserId` AS `Bids.User.Profile.puserId`, `Bids->User->Profile`.`UserId` AS `Bids.User.Profile.UserId`, `Bids->Project`.`id` AS `Bids.Project.id`, `Bids->Project`.`name` AS `Bids.Project.name`, `Bids->Project`.`description` AS `Bids.Project.description`, `Bids->Project`.`budget_range` AS `Bids.Project.budget_range`, `Bids->Project`.`file` AS `Bids.Project.file`, `Bids->Project`.`createdAt` AS `Bids.Project.createdAt`, `Bids->Project`.`updatedAt` AS `Bids.Project.updatedAt`, `Bids->Project`.`UserId` AS `Bids.Project.UserId` FROM `Projects` AS `Project` LEFT OUTER JOIN `Users` AS `User` ON `Project`.`UserId` = `User`.`id` LEFT OUTER JOIN `Profiles` AS `User->Profile` ON `User`.`id` = `User->Profile`.`UserId` LEFT OUTER JOIN `Projects` AS `User->Projects` ON `User`.`id` = `User->Projects`.`UserId` LEFT OUTER JOIN `Bids` AS `User->Bids` ON `User`.`id` = `User->Bids`.`UserId` LEFT OUTER JOIN ( `UserSkills` AS `User->Skills->UserSkills` INNER JOIN `Skills` AS `User->Skills` ON `User->Skills`.`id` = `User->Skills->UserSkills`.`SkillId`) ON `User`.`id` = `User->Skills->UserSkills`.`UserId` LEFT OUTER JOIN ( `ProjectSkills` AS `Skills->ProjectSkills` INNER JOIN `Skills` AS `Skills` ON `Skills`.`id` = `Skills->ProjectSkills`.`SkillId`) ON `Project`.`id` = `Skills->ProjectSkills`.`ProjectId` LEFT OUTER JOIN `Bids` AS `Bids` ON `Project`.`id` = `Bids`.`ProjectId` LEFT OUTER JOIN `Users` AS `Bids->User` ON `Bids`.`UserId` = `Bids->User`.`id` LEFT OUTER JOIN `Profiles` AS `Bids->User->Profile` ON `Bids->User`.`id` = `Bids->User->Profile`.`UserId` LEFT OUTER JOIN `Projects` AS `Bids->Project` ON `Bids`.`ProjectId` = `Bids->Project`.`id`;
+[0mGET /api/projects/all/open [32m201 [0m208.011 ms - 20599[0m
+["pass",{"title":"should return profile data","fullTitle":"API endpoint /api/projects for home should return profile data","duration":214,"currentRetry":0}]
+[0mGET /api/projects/all/open [33m401 [0m1.539 ms - -[0m
+["pass",{"title":"should return unauthroized access","fullTitle":"API endpoint /api/projects for home should return unauthroized access","duration":6,"currentRetry":0}]
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`email` = 'test@gmail.com' LIMIT 1;
+password cheking:test
+[0mPOST /auth/login [32m200 [0m113.523 ms - 379[0m
+["pass",{"title":"should return token","fullTitle":"API endpoint /auth/login should return token","duration":120,"currentRetry":0}]
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`email` = 'test@gmail.com' LIMIT 1;
+password cheking:te1t
+[0mPOST /auth/login [33m400 [0m127.428 ms - 31[0m
+["pass",{"title":"should return error 404","fullTitle":"API endpoint /auth/login should return error 404","duration":133,"currentRetry":0}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+{ id: '1' }
+Executing (default): SELECT `Profile`.*, `puser`.`id` AS `puser.id`, `puser`.`email` AS `puser.email`, `puser`.`password` AS `puser.password`, `puser`.`userType` AS `puser.userType`, `puser`.`createdAt` AS `puser.createdAt`, `puser`.`updatedAt` AS `puser.updatedAt`, `puser->Skills`.`id` AS `puser.Skills.id`, `puser->Skills`.`name` AS `puser.Skills.name`, `puser->Skills`.`createdAt` AS `puser.Skills.createdAt`, `puser->Skills`.`updatedAt` AS `puser.Skills.updatedAt`, `puser->Skills->UserSkills`.`createdAt` AS `puser.Skills.UserSkills.createdAt`, `puser->Skills->UserSkills`.`updatedAt` AS `puser.Skills.UserSkills.updatedAt`, `puser->Skills->UserSkills`.`SkillId` AS `puser.Skills.UserSkills.SkillId`, `puser->Skills->UserSkills`.`UserId` AS `puser.Skills.UserSkills.UserId` FROM (SELECT `Profile`.`id`, `Profile`.`phone`, `Profile`.`image`, `Profile`.`about`, `Profile`.`name`, `Profile`.`createdAt`, `Profile`.`updatedAt`, `Profile`.`puserId`, `Profile`.`UserId` FROM `Profiles` AS `Profile` WHERE `Profile`.`userId` = '1' LIMIT 1) AS `Profile` LEFT OUTER JOIN `Users` AS `puser` ON `Profile`.`puserId` = `puser`.`id` LEFT OUTER JOIN ( `UserSkills` AS `puser->Skills->UserSkills` INNER JOIN `Skills` AS `puser->Skills` ON `puser->Skills`.`id` = `puser->Skills->UserSkills`.`SkillId`) ON `puser`.`id` = `puser->Skills->UserSkills`.`UserId`;
+Profile {
+  dataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:07:30.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false,
+        Skills: [Array] } },
+  _previousDataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:07:30.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false,
+        Skills: [Array] } },
+  _changed: {},
+  _modelOptions: 
+   { timestamps: true,
+     validate: {},
+     freezeTableName: false,
+     underscored: false,
+     underscoredAll: false,
+     paranoid: false,
+     rejectOnEmpty: false,
+     whereCollection: { userId: '1' },
+     schema: null,
+     schemaDelimiter: '',
+     defaultScope: {},
+     scopes: [],
+     indexes: [],
+     name: { plural: 'Profiles', singular: 'Profile' },
+     omitNull: false,
+     sequelize: 
+      Sequelize {
+        options: [Object],
+        config: [Object],
+        dialect: [Object],
+        queryInterface: [Object],
+        models: [Object],
+        modelManager: [Object],
+        connectionManager: [Object],
+        importCache: [Object],
+        test: [Object] },
+     hooks: {},
+     uniqueKeys: {} },
+  _options: 
+   { isNewRecord: false,
+     _schema: null,
+     _schemaDelimiter: '',
+     include: [ [Object] ],
+     includeNames: [ 'puser' ],
+     includeMap: { puser: [Object] },
+     includeValidated: true,
+     attributes: 
+      [ 'id',
+        'phone',
+        'image',
+        'about',
+        'name',
+        'createdAt',
+        'updatedAt',
+        'puserId',
+        'UserId' ],
+     raw: true },
+  __eagerlyLoadedAssociations: [],
+  isNewRecord: false,
+  puser: 
+   User {
+     dataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z,
+        Skills: [Array] },
+     _previousDataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z,
+        Skills: [Array] },
+     _changed: {},
+     _modelOptions: 
+      { timestamps: true,
+        validate: {},
+        freezeTableName: false,
+        underscored: false,
+        underscoredAll: false,
+        paranoid: false,
+        rejectOnEmpty: false,
+        whereCollection: [Object],
+        schema: null,
+        schemaDelimiter: '',
+        defaultScope: {},
+        scopes: [],
+        indexes: [],
+        name: [Object],
+        omitNull: false,
+        sequelize: [Object],
+        hooks: [Object],
+        uniqueKeys: [Object] },
+     _options: 
+      { isNewRecord: false,
+        _schema: null,
+        _schemaDelimiter: '',
+        include: [Array],
+        includeNames: [Array],
+        includeMap: [Object],
+        includeValidated: true,
+        raw: true,
+        attributes: undefined },
+     __eagerlyLoadedAssociations: [],
+     isNewRecord: false,
+     Skills: [ [Object] ] } }
+[0mGET /api/profile/1 [32m201 [0m44.193 ms - 792[0m
+["pass",{"title":"should return profile data","fullTitle":"API endpoint /api/profile should return profile data","duration":51,"currentRetry":0}]
+{ id: 1, iat: 1521400598, exp: 1521486998 }
+Executing (default): SELECT `id`, `email`, `password`, `userType`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`id` = 1;
+{ name: 'Miraj Patel1' }
+undefined
+Executing (default): SELECT `Profile`.`id`, `Profile`.`phone`, `Profile`.`image`, `Profile`.`about`, `Profile`.`name`, `Profile`.`createdAt`, `Profile`.`updatedAt`, `Profile`.`puserId`, `Profile`.`UserId`, `puser`.`id` AS `puser.id`, `puser`.`email` AS `puser.email`, `puser`.`password` AS `puser.password`, `puser`.`userType` AS `puser.userType`, `puser`.`createdAt` AS `puser.createdAt`, `puser`.`updatedAt` AS `puser.updatedAt` FROM `Profiles` AS `Profile` LEFT OUTER JOIN `Users` AS `puser` ON `Profile`.`puserId` = `puser`.`id` WHERE `Profile`.`userId` = 1 LIMIT 1;
+Profile {
+  dataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:07:30.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false } },
+  _previousDataValues: 
+   { id: 1,
+     phone: '45654553',
+     image: '/uploads/profile/3a6eb883-d731-4639-a407-e3c1f7baed45.JPG',
+     about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsurinter took a galley of type and scrambled it to make a type specimen book. It has su',
+     name: 'Miraj Patel1',
+     createdAt: 2018-03-06T00:00:00.000Z,
+     updatedAt: 2018-03-18T20:07:30.000Z,
+     puserId: 1,
+     UserId: 1,
+     puser: 
+      User {
+        dataValues: [Object],
+        _previousDataValues: [Object],
+        _changed: {},
+        _modelOptions: [Object],
+        _options: [Object],
+        __eagerlyLoadedAssociations: [],
+        isNewRecord: false } },
+  _changed: {},
+  _modelOptions: 
+   { timestamps: true,
+     validate: {},
+     freezeTableName: false,
+     underscored: false,
+     underscoredAll: false,
+     paranoid: false,
+     rejectOnEmpty: false,
+     whereCollection: { userId: 1 },
+     schema: null,
+     schemaDelimiter: '',
+     defaultScope: {},
+     scopes: [],
+     indexes: [],
+     name: { plural: 'Profiles', singular: 'Profile' },
+     omitNull: false,
+     sequelize: 
+      Sequelize {
+        options: [Object],
+        config: [Object],
+        dialect: [Object],
+        queryInterface: [Object],
+        models: [Object],
+        modelManager: [Object],
+        connectionManager: [Object],
+        importCache: [Object],
+        test: [Object] },
+     hooks: {},
+     uniqueKeys: {} },
+  _options: 
+   { isNewRecord: false,
+     _schema: null,
+     _schemaDelimiter: '',
+     include: [ [Object] ],
+     includeNames: [ 'puser' ],
+     includeMap: { puser: [Object] },
+     includeValidated: true,
+     attributes: 
+      [ 'id',
+        'phone',
+        'image',
+        'about',
+        'name',
+        'createdAt',
+        'updatedAt',
+        'puserId',
+        'UserId' ],
+     raw: true },
+  __eagerlyLoadedAssociations: [],
+  isNewRecord: false,
+  puser: 
+   User {
+     dataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z },
+     _previousDataValues: 
+      { id: 1,
+        email: 'test@gmail.com',
+        password: '$2a$10$RWv2ZQViRmnE8b.ZW4h3NudnsCaQ.k9WX.D06QzVJ4KNOpuTnQSOW',
+        userType: 'work',
+        createdAt: 2018-03-06T22:58:33.000Z,
+        updatedAt: 2018-03-06T22:58:33.000Z },
+     _changed: {},
+     _modelOptions: 
+      { timestamps: true,
+        validate: {},
+        freezeTableName: false,
+        underscored: false,
+        underscoredAll: false,
+        paranoid: false,
+        rejectOnEmpty: false,
+        whereCollection: [Object],
+        schema: null,
+        schemaDelimiter: '',
+        defaultScope: {},
+        scopes: [],
+        indexes: [],
+        name: [Object],
+        omitNull: false,
+        sequelize: [Object],
+        hooks: [Object],
+        uniqueKeys: [Object] },
+     _options: 
+      { isNewRecord: false,
+        _schema: null,
+        _schemaDelimiter: '',
+        include: undefined,
+        includeNames: undefined,
+        includeMap: undefined,
+        includeValidated: true,
+        raw: true,
+        attributes: undefined },
+     __eagerlyLoadedAssociations: [],
+     isNewRecord: false } }
+Executing (default): UPDATE `Profiles` SET `updatedAt`='2018-03-18 20:07:31' WHERE `id` = 1
+[0mPUT /api/profile [32m201 [0m358.047 ms - 430[0m
+["pass",{"title":"should update name","fullTitle":"API endpoint /api/profile should update name","duration":366,"currentRetry":0}]
+[0mGET /api/profile/1 [33m401 [0m1.991 ms - -[0m
+["pass",{"title":"should return login error","fullTitle":"API endpoint /api/profile should return login error","duration":7,"currentRetry":0}]
+{ email: 'test154y@gmail.com',
+  password: 'test',
+  userType: 'work' }
+[object SequelizeInstance:User]: hash
+Executing (default): INSERT INTO `Users` (`id`,`email`,`password`,`userType`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'test154y@gmail.com','$2a$10$hQXoOR3uw9nu5lRxle65kOP6iwByppk2U.4FngJhvgk6YFIDcqxoi','work','2018-03-18 20:07:31','2018-03-18 20:07:31');
+[0mPOST /auth/signup [32m201 [0m237.709 ms - 208[0m
+["pass",{"title":"should return user created","fullTitle":"API endpoint /auth/signup should return user created","duration":245,"currentRetry":0}]
+{ email: 'test@gmail.com', password: 'te1t', userType: 'work' }
+[object SequelizeInstance:User]: hash
+Executing (default): INSERT INTO `Users` (`id`,`email`,`password`,`userType`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'test@gmail.com','$2a$10$pqPCBjYJ1YALyVVrsMmkBuIgfEc2uKDsrkYM9oPCFpjny8xevdpcO','work','2018-03-18 20:07:31','2018-03-18 20:07:31');
+[0mPOST /auth/signup [33m400 [0m237.761 ms - 1463[0m
+["pass",{"title":"should return error that email should be unique","fullTitle":"API endpoint /auth/signup should return error that email should be unique","duration":245,"currentRetry":0}]
+["end",{"suites":5,"tests":12,"passes":12,"pending":0,"failures":0,"start":"2018-03-18T20:07:30.404Z","end":"2018-03-18T20:07:32.056Z","duration":1652}]

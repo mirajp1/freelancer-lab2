@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "273_freelancer",
+    "password": "qwertyasdfg",
+    "database": "273_freelancer",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging":false,
+    "pool": {
+      "max": 20,
+      "min": 1,
+      "idle": 10000
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "keys":{
+    "secret":"fsfsdfi879s8fds9f"
+  }
+}

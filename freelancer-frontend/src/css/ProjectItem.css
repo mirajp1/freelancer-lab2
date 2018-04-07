@@ -1,0 +1,26 @@
+.project-item{
+    padding: 12px;
+    border-bottom: 1px solid #f4f4f4;
+    background-color: white;
+}
+
+.project-name{
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 30px;
+}
+
+.project-description{
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+
+.project-skills{
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+
+.project-budget{
+    font-size:20px;
+}

@@ -1,0 +1,81 @@
+q1
+screenshot cmd
+
+q2
+3 screenshots
+
+q3
+
+FROM golang:latest 
+EXPOSE 3000
+RUN mkdir /app 
+ADD . /app/ 
+WORKDIR /app 
+ENV GOPATH /app
+RUN cd /app ; go install gumball
+CMD ["/app/bin/gumball"]
+
+
+docker build -t gumball .
+
+
+docker run --name gumball --link mysql-lab8:mysql -td gumball
+
+
+q4
+
+//create new network
+docker network create lab8
+
+//mysql
+docker  run --name mysql-lab8 --network lab8 -td mysql:5.5
+
+//gumball
+docker  run --name gumball --network lab8 -td gumball
+
+
+//cassandra
+docker run -d --name kong-db cassandra:2.2
+docker network connect lab8 kong-db 
+
+//kong
+docker run --rm --network lab8 -e "KONG_DATABASE=cassandra"  -e "KONG_CASSANDRA_CONTACT_POINTS=kong-db"  kong:0.9.9 kong migrations up
+
+docker run -d --name kong \
+    --network lab8 \
+    -e "KONG_DATABASE=cassandra" \
+    -e "KONG_CASSANDRA_CONTACT_POINTS=kong-db" \
+    -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
+    -e "KONG_ADMIN_ACCESS_LOG=/dev/stdout" \
+    -e "KONG_PROXY_ERROR_LOG=/dev/stderr" \
+    -e "KONG_ADMIN_ERROR_LOG=/dev/stderr" \
+    -e "KONG_ADMIN_LISTEN=0.0.0.0:8001" \
+    -e "KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444" \
+    -p 8000:8000 \
+    -p 8443:8443 \
+    -p 8001:8001 \
+    -p 8444:8444 \
+    kong:0.9.9
+
+
+
+miraj@miraj:~$ docker ps --all --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t"
+CONTAINER ID        NAMES               IMAGE               STATUS                     
+38ba4a6774f2        kong                kong:0.9.9          Up About an hour           
+5f1deb1b7a64        kong-db             cassandra:2.2       Up 2 hours                 
+53df76ca7b59        gumball             gumball             Up 2 hours                 
+e22485333f18        jovial_gates        2bce99a224e9        Exited (2) 4 hours ago     
+247acde21b4a        mysql-lab8          mysql:5.5           Up 5 hours                 
+faafe9e736f4        starbucks           starbucks           Exited (255) 13 days ago   
+b077c5f0bc77        amazing_kalam       hello-world         Exited (0) 13 days ago  
+
+   
+miraj@miraj:~$ docker ps --all --format "table {{.Names}}\t{{.Ports}}\t"
+NAMES               PORTS                                                                          
+kong                0.0.0.0:8000-8001->8000-8001/tcp, 7946/tcp, 0.0.0.0:8443-8444->8443-8444/tcp   
+kong-db             7000-7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp                                    
+gumball             3000/tcp                                                                       
+jovial_gates                                                                                       
+mysql-lab8          3306/tcp                                                                       
+starbucks           0.0.0.0:90->9090/tcp                                                           
+amazing_kalam                             

@@ -1,0 +1,19 @@
+.item{
+    padding: 8px;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.list{
+    list-style-type: none;
+    padding-left:15px;
+    padding-right:15px;
+
+}
+
+.skills{
+    background-color: white;
+}
+
+.skills-title{
+    padding-left:15px;
+}

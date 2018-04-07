@@ -1,0 +1,39 @@
+.left-background{
+    background-color: white;
+    padding-top:15px
+}
+
+.right-background{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #F7F7F7;
+}
+
+
+.profile-top-row{
+    box-shadow: 1px 2px 5px rgba(30, 30, 30, .2);
+}
+
+.profile-skill-row{
+
+    margin-top:30px;
+}
+.profile-skill-column{
+    box-shadow: 1px 2px 5px rgba(30, 30, 30, .2);
+
+    padding-right:0px!important;
+    padding-left:0px!important;
+}
+
+.row{
+    overflow: hidden;
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.rate-amount{
+    display: inline;
+}
