@@ -7,7 +7,7 @@ class ProjectItem extends Component {
 
     render() {
 
-        const {Skills,Bids,User:{Profile}} = this.props.details;
+        const {freelancer,skills,bids,creator} = this.props.details;
         return (
 
 
@@ -18,7 +18,7 @@ class ProjectItem extends Component {
 
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="project-name"><a href={"/projects/"+this.props.details.id}>{this.props.details.name}</a></div>
+                            <div className="project-name"><a href={"/projects/"+this.props.details._id}>{this.props.details.name}</a></div>
                         </div>
                     </div>
 
@@ -30,7 +30,7 @@ class ProjectItem extends Component {
 
                     <div className="row">
                         <div className="col-md-12 ">
-                            <div className="project-skills">{Skills.map((item)=>{return item.name+","})}</div>
+                            <div className="project-skills">{skills && skills.map((item)=>{return item.name+","})}</div>
                         </div>
                     </div>
 
@@ -38,13 +38,13 @@ class ProjectItem extends Component {
 
                 <div className="col-md-2">
 
-                    <a className="project-bid pull-right">{Profile && Profile.name}</a>
+                    <a className="project-bid pull-right">{freelancer ? freelancer.name:"Not Assigned"}</a>
 
                 </div>
 
                 <div className="col-md-2">
 
-                    <div className="project-bid pull-right">{"$"+Bids.length*100+""}</div>
+                    <div className="project-bid pull-right">{"$"+this.props.details.average_bid+""}</div>
 
                 </div>
 
@@ -53,7 +53,7 @@ class ProjectItem extends Component {
                     <div className="row ">
 
                         <div className="col-md-12">
-                            <div className="pull-right project-started">{"$101"}</div>
+                            <div className="pull-right project-started">{"April 30,2018"}</div>
                         </div>
 
 
@@ -75,7 +75,7 @@ class ProjectItem extends Component {
                     <div className="row">
 
                         <div className="col-md-12">
-                            <div className="project-budget pull-right">{this.props.key%2 === 0 ? "OPEN" : "DONE"}</div>
+                            <div className="project-budget pull-right">{this.props.details && this.props.details.status}</div>
                         </div>
 
 

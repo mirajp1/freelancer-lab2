@@ -3,6 +3,31 @@ const Project = require('../models').Project;
 const User = require('../models').User;
 const Skill = require('../models').Skill;
 
+function projectsAvgBid(projects,callback){
+
+    projects.forEach(function(item){
+        projectAvgBid(item);
+    })
+
+    callback();
+
+}
+
+function projectAvgBid(project){
+
+    let ans = 0.0;
+    let count = 0;
+    project.bids.forEach(function(item){
+        ans+= item.bid_amount? item.bid_amount : 0
+        count++;
+    })
+    if(count>0)
+        project.average_bid=ans/count
+    else
+        project.average_bid=0;
+}
+
+
 module.exports = {
     retrieve(req, cb) {
         let res = {}
@@ -10,6 +35,7 @@ module.exports = {
         console.log(req.user);
 
         Project.findOne({_id:req.params.id})
+            .lean(true)
             .populate('creator')
             .populate('skills')
             .populate('freelancer')
@@ -22,9 +48,13 @@ module.exports = {
                     cb(null,res);
                 }
                 else if(project){
-                    res.code=201;
-                    res.value=project;
-                    cb(null,res);
+                    projectsAvgBid([project],function(){
+                        // console.log("cb"+projects[0].average_bid);
+                        res.code=201;
+                        res.value=project;
+                        cb(null,res);
+                    })
+
                 }
                 else{
                     res.code=404;
@@ -136,13 +166,13 @@ module.exports = {
 
                     Project.findOneAndUpdate(
                         {_id:req.params.id},
-                        {$push:{bids:bid}})
+                        {$push:{bids:bid}},{new:true})
                         .then((project)=>{
                             if(project) {
                                 User.findOneAndUpdate({_id: req.user._id}, {$push: {bidded_projects: req.user._id}})
                                     .then(() => {
                                         res.code = 201;
-                                        res.value = project;
+                                        res.value = project.bids;
                                         cb(null, res);
                                     })
                                     .catch(error => {
@@ -211,9 +241,10 @@ module.exports = {
         let res = {}
         Project.find(
             {
-                "bids.bidder._id":req.user._id
+                "bids.bidder":req.user._id
             }
         )
+            .lean(true)
             .populate('creator')
             .populate('skills')
             .populate('freelancer')
@@ -226,9 +257,13 @@ module.exports = {
                     cb(null,res);
                 }
                 else if(projects){
-                    res.code=201;
-                    res.value=projects;
-                    cb(null,res);
+                    projectsAvgBid(projects,function(){
+                        // console.log("cb"+projects[0].average_bid);
+                        res.code=201;
+                        res.value=projects;
+                        cb(null,res);
+                    })
+
                 }
                 else{
                     res.code=404;
@@ -239,7 +274,7 @@ module.exports = {
 
     },
     retrieveAllCreated(req, cb) {
-        console.log(req.user.id);
+        console.log(req.user);
 
         let res = {}
         Project.find(
@@ -247,6 +282,7 @@ module.exports = {
                 "creator":req.user._id
             }
         )
+            .lean(true)
             .populate('creator')
             .populate('skills')
             .populate('freelancer')
@@ -259,9 +295,13 @@ module.exports = {
                     cb(null,res);
                 }
                 else if(projects){
-                    res.code=201;
-                    res.value=projects;
-                    cb(null,res);
+                    projectsAvgBid(projects,function(){
+                        // console.log("cb"+projects[0].average_bid);
+                        res.code=201;
+                        res.value=projects;
+                        cb(null,res);
+                    })
+
                 }
                 else{
                     res.code=404;
@@ -270,4 +310,87 @@ module.exports = {
                 }
             })
     },
+    retrieveAllRelevant(req, cb) {
+        console.log(req.user);
+
+        let res = {}
+
+        // let user_skills=[mongoose.Types.ObjectId('5ac7cf2e734d1d2fb54281f8')]
+        User.findOne({_id:req.user._id})
+            .then(user=>{
+                Project.aggregate(
+                    [
+                        { "$match": { "skills.0": { "$exists": true } } },
+                        { "$redact": {
+                                "$cond": [
+                                    { "$gte": [
+                                            { "$size": { "$setIntersection": [ "$skills", user.skills ] } },
+                                            1
+                                        ]},
+                                    "$$KEEP",
+                                    "$$PRUNE"
+                                ]
+                            }},
+                        {
+                            "$project":{_id:1}
+                        }
+                    ]
+                )
+                    .exec((err,projects)=>{
+                        console.log(projects);
+                        if(err){
+                            res.code = 400;
+                            res.value = err;
+                            cb(null,res);
+                        }
+                        else if(projects){
+                            let ids = []
+                            projects.forEach(function(item){
+                                ids.push(item._id)
+                            })
+                            Project.find({'_id': {$in:ids}  })
+                                .lean(true)
+                                .populate('creator')
+                                .populate('skills')
+                                .populate('freelancer')
+                                .populate('bids.bidder')
+                                .exec((err,projects)=>{
+                                    console.log(projects);
+                                    if(err){
+                                        res.code = 400;
+                                        res.value = err;
+                                        cb(null,res);
+                                    }
+                                    else if(projects){
+                                        projectsAvgBid(projects,function(){
+                                            // console.log("cb"+projects[0].average_bid);
+                                            res.code=201;
+                                            res.value=projects;
+                                            cb(null,res);
+                                        })
+
+                                    }
+                                    else{
+                                        res.code=404;
+                                        res.value={error:"projects not found!"};
+                                        cb(null,res);
+                                    }
+                                })
+
+                        }
+                        else{
+                            res.code=404;
+                            res.value={error:"projects not found!"};
+                            cb(null,res);
+                        }
+                    })
+            })
+            .catch(err=>{
+                res.code=400;
+                res.value={error:err};
+                cb(null,res);
+            })
+
+    },
+
 };

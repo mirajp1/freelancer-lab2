@@ -7,8 +7,7 @@ class BidderItem extends Component {
 
 
     render() {
-        const {User} = this.props.details;
-        const {Profile} = User;
+        const {bidder} = this.props.details;
         return (
 
 
@@ -26,7 +25,7 @@ class BidderItem extends Component {
                         </div>
 
                         <div className="col-md-10">
-                            <div className="bid-user-name"><a>{Profile.name}</a></div>
+                            <div className="bid-user-name"><a>{bidder.name}</a></div>
                         </div>
                     </div>
 
@@ -56,7 +55,7 @@ class BidderItem extends Component {
 
                     <div className="row">
 
-                        <a className="btn btn-info">Hire Me</a>
+                        {this.props.allowHire && <a className="btn btn-info">Hire Me</a>}
 
                     </div>
 

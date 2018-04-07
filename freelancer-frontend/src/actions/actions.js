@@ -194,6 +194,7 @@ export function fetchAllOpenProjects(token) {
     return function(dispatch) {
         API.getAllOpenProjects(token)
             .then(res => {
+                console.log("response open projecst:");
                 console.log(res);
 
                 if(!res.error){
@@ -275,6 +276,35 @@ export function fetchEmployerProjects(token) {
 
 }
 
+export function fetchRelevantProjects(token) {
+
+    console.log("fetch all relevant projects:");
+    return function(dispatch) {
+        API.getRelevantProjects(token)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"GET_ALL_RELEVANT_PROJECTS",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"GET_ALL_RELEVANT_PROJECTS_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
 export function addProject(token, project) {
 
     console.log("adding project:"+token+":"+project);
@@ -288,6 +318,10 @@ export function addProject(token, project) {
                         type:"ADD_PROJECT",
                         payload:res
                     });
+
+                    if(res._id)
+                        window.location.href = '/projects/'+res._id;
+
                 }
                 else{
                     dispatch({

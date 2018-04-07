@@ -7,6 +7,7 @@ function ConnectionProvider() {
             this.client = new kafka.Client("localhost:2181");
             this.kafkaConsumerConnection = new kafka.Consumer(this.client,[ { topic: topic_name, partition: 0 }],{groupId: topic_name});
             this.client.on('ready', function () { console.log('client ready!') })
+            this.client.on('error', function (err) { console.log(topic_name+': error');console.log(err) })
         }
         return this.kafkaConsumerConnection;
     };
@@ -20,6 +21,8 @@ function ConnectionProvider() {
             this.kafkaProducerConnection = new HighLevelProducer(this.client);
             //this.kafkaConnection = new kafka.Producer(this.client);
             console.log('producer ready');
+            this.client.on('error', function (err) { console.log(err) })
+
         }
         return this.kafkaProducerConnection;
     };

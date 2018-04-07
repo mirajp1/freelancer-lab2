@@ -290,4 +290,19 @@ module.exports = {
         //         res.status(400).send(error)
         //     });
     },
+    retrieveAllRelevant(req, res) {
+
+        kafka.make_request('retrieve_all_relevant_projects', {body: req.body,user:req.user}, function (err, results) {
+            console.log('in retrieve_all_relevant_projects cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
 };

@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import '../css/ProjectItem.css';
 
-class ProjectItem extends Component {
+class ProjectFreelancerDashboardItem extends Component {
 
 
 
     render() {
 
-        const {skills,bids,creator} = this.props.details;
+        const {freelancer,skills,bids,creator} = this.props.details;
         return (
+
 
 
             <div className="row project-item">
@@ -37,13 +38,13 @@ class ProjectItem extends Component {
 
                 <div className="col-md-2">
 
-                    <a className="project-bid pull-right">{creator && creator.name}</a>
+                    <a className="project-bid pull-right">{freelancer ? freelancer.name:"Not Assigned"}</a>
 
                 </div>
 
                 <div className="col-md-2">
 
-                    <div className="project-bid pull-right">{bids && bids.length+""}</div>
+                    <div className="project-bid pull-right">{"$"+this.props.details.average_bid+""}</div>
 
                 </div>
 
@@ -52,7 +53,7 @@ class ProjectItem extends Component {
                     <div className="row ">
 
                         <div className="col-md-12">
-                            <div className="pull-right project-started">{"Today"}</div>
+                            <div className="pull-right project-started">{"$15"}</div>
                         </div>
 
 
@@ -61,7 +62,7 @@ class ProjectItem extends Component {
                     <div className="row ">
 
                         <div className="col-md-12">
-                           <div className="project-days pull-right">{"6d 15h"}</div>
+                           <div className="project-days pull-right">{}</div>
                         </div>
 
 
@@ -74,7 +75,7 @@ class ProjectItem extends Component {
                     <div className="row">
 
                         <div className="col-md-12">
-                            <div className="project-budget pull-right">${this.props.details.budget_range}</div>
+                            <div className="project-budget pull-right">{this.props.details && this.props.details.status}</div>
                         </div>
 
 
@@ -83,7 +84,7 @@ class ProjectItem extends Component {
                     <div className="row">
 
                         <br/>
-                        <a className="btn btn btn-warning btn-sm pull-right" href={"/projects/"+this.props.details.id} >Bid Now</a>
+                        {/*<a className="btn btn btn-warning btn-sm pull-right" href={"/projects/"+this.props.details.id} >Bid Now</a>*/}
 
 
                     </div>
@@ -99,5 +100,5 @@ class ProjectItem extends Component {
 }
 
 
-export default ProjectItem;
+export default ProjectFreelancerDashboardItem;
 

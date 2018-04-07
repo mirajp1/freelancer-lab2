@@ -159,7 +159,6 @@ export const placeBid = (token,data,params) =>{
             ...headers,
             'Authorization': token,
             'Content-Type': 'application/json',
-            'credentials':'true'
         },
         credentials:'include',
         body:JSON.stringify(data)
@@ -182,7 +181,6 @@ export const getAllOpenProjects = (token) =>{
             ...headers,
             'Authorization': token,
             'Content-Type': 'application/json',
-            'credentials':'true'
         },
         credentials:'include',
     }).then(res => {
@@ -203,7 +201,6 @@ export const getFreelancerProjects = (token) =>{
             ...headers,
             'Authorization': token,
             'Content-Type': 'application/json',
-            'credentials':'true'
         },
         credentials:'include',
     }).then(res => {
@@ -224,7 +221,26 @@ export const getEmployerProjects = (token) =>{
             ...headers,
             'Authorization': token,
             'Content-Type': 'application/json',
-            'credentials':'true'
+        },
+        credentials:'include',
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
+export const getRelevantProjects = (token) =>{
+
+    return fetch("/api/projects/all/relevant", {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Authorization': token,
+            'Content-Type': 'application/json',
         },
         credentials:'include',
     }).then(res => {

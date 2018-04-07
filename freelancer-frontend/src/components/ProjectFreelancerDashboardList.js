@@ -3,8 +3,9 @@ import {withRouter} from "react-router-dom";
 import '../css/ProjectList.css';
 import ProjectItem from "./ProjectItem";
 import ProjectDashboardItem from "./ProjectDashboardItem";
+import ProjectFreelancerDashboardItem from "./ProjectFreelancerDashboardItem";
 
-class ProjectList extends Component {
+class ProjectFreelancerDashboardList extends Component {
     render() {
         return (
 
@@ -18,7 +19,7 @@ class ProjectList extends Component {
                         </div>
 
                         <div className="col-md-2 col-xs-2">
-                            <div className="pull-right">FREELANCER</div>
+                            <div className="pull-right">Employer</div>
                         </div>
 
                         <div className="col-md-2 col-xs-2">
@@ -27,7 +28,7 @@ class ProjectList extends Component {
                         </div>
 
                         <div className="col-md-2 col-xs-2">
-                            <div className="pull-right">COMPLETION DATE</div>
+                            <div className="pull-right">YOUR BID</div>
                         </div>
 
                         <div className="col-md-2 col-xs-2">
@@ -37,7 +38,7 @@ class ProjectList extends Component {
                     </div>
 
                     {this.props.projects.map(function (item,key){
-                      return (<ProjectDashboardItem key={key} details={item}/>);
+                      return (<ProjectFreelancerDashboardItem key={key} details={item}/>);
                     } )}
 
                 </div>
@@ -46,4 +47,4 @@ class ProjectList extends Component {
     }
 }
 
-export default withRouter(ProjectList);
+export default withRouter(ProjectFreelancerDashboardList);
