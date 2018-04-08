@@ -305,4 +305,20 @@ module.exports = {
             }
         });
     },
+    hire(req, res) {
+
+        kafka.make_request('project_hire', {body: req.body,user:req.user,params:req.params}, function (err, results) {
+            console.log('in project_hire cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
+
 };

@@ -5,6 +5,7 @@ var projectUpload = require('../config/multerConfig').projectMulter;
 
 router.get('/:id', projectsController.retrieve);
 router.post('/:id/bid', projectsController.bid);
+router.post('/:id/hire', projectsController.hire);
 
 router.post('/', projectUpload.single('file'),projectsController.create);
 router.get('/all/bidded', projectsController.retrieveAllBidded);

@@ -17,6 +17,7 @@ var retrieveCreatedProjects = new connection().getConsumer('retrieve_all_created
 var projectBid = new connection().getConsumer('project_bid');
 var retrieveProfile = new connection().getConsumer('retrieve_profile');
 var updateProfile = new connection().getConsumer('update_profile');
+var projectHire = new connection().getConsumer('project_hire');
 var retrieveRelevantProjects = new connection().getConsumer('retrieve_all_relevant_projects');
 var producer = new connection().getProducer();
 
@@ -285,6 +286,29 @@ retrieveRelevantProjects.on('message', function (message) {
     console.log(JSON.stringify(message.value));
     var data = JSON.parse(message.value);
     projects.retrieveAllRelevant(data.data, function(err,res){
+        console.log('after handle');
+        console.log(res);
+        var payloads = [
+            { topic: data.replyTo,
+                messages:JSON.stringify({
+                    correlationId:data.correlationId,
+                    data : res
+                }),
+                partition : 0
+            }
+        ];
+        producer.send(payloads, function(err, data){
+            console.log(data);
+        });
+        return;
+    });
+});
+
+projectHire.on('message', function (message) {
+    console.log('hire message received');
+    console.log(JSON.stringify(message.value));
+    var data = JSON.parse(message.value);
+    projects.hire(data.data, function(err,res){
         console.log('after handle');
         console.log(res);
         var payloads = [

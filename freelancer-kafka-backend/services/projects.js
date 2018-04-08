@@ -169,7 +169,7 @@ module.exports = {
                         {$push:{bids:bid}},{new:true})
                         .then((project)=>{
                             if(project) {
-                                User.findOneAndUpdate({_id: req.user._id}, {$push: {bidded_projects: req.user._id}})
+                                User.findOneAndUpdate({_id: req.user._id}, {$push: {bidded_projects: project._id}})
                                     .then(() => {
                                         res.code = 201;
                                         res.value = project.bids;
@@ -193,6 +193,69 @@ module.exports = {
                             res.value = error;
                             cb(null,res);
                         });
+                }
+            })
+            .catch(error => {
+                res.code = 400;
+                res.value = error;
+                cb(null,res);
+            });
+
+    },
+    hire(req, cb) {
+
+        let res ={}
+        console.log(req.body);
+
+        Project.findOne({
+            "_id":req.params.id,
+            "creator":req.user._id
+        })
+            .then(project =>{
+                if(!project) {
+                    res.code = 400;
+                    res.value = {error: "No such project exists or your are not the creator"}
+                    cb(null,res)
+                }
+                else{
+
+                    Project.find({
+                        _id:req.params.id,
+                        freelancer:{$ne:null}
+                    })
+                        .then((project)=> {
+
+                            if (project && project.length===1) {
+                                console.log(project);
+                                res.code = 400;
+                                res.value = {error: "You can't hire freelancer again for this project!"}
+                                cb(null, res)
+                            }
+                            else {
+                                Project.findOneAndUpdate(
+                                    {_id: req.params.id},
+                                    {freelancer: req.body.userId}, {new: true})
+                                    .then((project) => {
+                                        if (project) {
+                                            res.code = 201;
+                                            res.value = project;
+                                            cb(null, res);
+                                        }
+                                        else {
+                                            res.code = 404;
+                                            res.value = {error: "Project not found!"};
+                                            cb(null, res);
+                                        }
+
+                                    })
+                                    .catch(error => {
+                                        res.code = 400;
+                                        res.value = error;
+                                        cb(null, res);
+                                    });
+                            }
+
+                        })
                 }
             })
             .catch(error => {
@@ -226,11 +289,11 @@ module.exports = {
                     res.value=projects;
                     cb(null,res);
                 }
-                else{
-                    res.code=404;
-                    res.value={error:"projects not found!"};
-                    cb(null,res);
-                }
+                // else{
+                //     res.code=404;
+                //     res.value={error:"projects not found!"};
+                //     cb(null,res);
+                // }
             })
 
 
@@ -265,11 +328,11 @@ module.exports = {
                     })
 
                 }
-                else{
-                    res.code=404;
-                    res.value={error:"projects not found!"};
-                    cb(null,res);
-                }
+                // else{
+                //     res.code=404;
+                //     res.value={error:"projects not found!"};
+                //     cb(null,res);
+                // }
             })
 
     },
@@ -303,11 +366,11 @@ module.exports = {
                     })
 
                 }
-                else{
-                    res.code=404;
-                    res.value={error:"projects not found!"};
-                    cb(null,res);
-                }
+                // else{
+                //     res.code=404;
+                //     res.value={error:"projects not found!"};
+                //     cb(null,res);
+                // }
             })
     },
     retrieveAllRelevant(req, cb) {
@@ -370,11 +433,11 @@ module.exports = {
                                         })
 
                                     }
-                                    else{
-                                        res.code=404;
-                                        res.value={error:"projects not found!"};
-                                        cb(null,res);
-                                    }
+                                    // else{
+                                    //     res.code=404;
+                                    //     res.value={error:"projects not found!"};
+                                    //     cb(null,res);
+                                    // }
                                 })
 
                         }

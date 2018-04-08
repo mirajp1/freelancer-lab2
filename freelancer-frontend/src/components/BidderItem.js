@@ -21,7 +21,7 @@ class BidderItem extends Component {
                     <div className="row">
 
                         <div className="col-md-2">
-                            <img src={img_default} className="img-thumbnail" />
+                            <img src={bidder ? bidder.image:img_default} className="img-thumbnail" />
                         </div>
 
                         <div className="col-md-10">

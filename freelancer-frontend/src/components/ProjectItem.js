@@ -13,7 +13,7 @@ class ProjectItem extends Component {
 
             <div className="row project-item">
 
-                <div className="col-md-4">
+                <div className="col-md-6">
 
                     <div className="row">
                         <div className="col-md-12">
@@ -47,27 +47,27 @@ class ProjectItem extends Component {
 
                 </div>
 
-                <div className="col-md-2">
+                {/*<div className="col-md-2">*/}
 
-                    <div className="row ">
+                    {/*<div className="row ">*/}
 
-                        <div className="col-md-12">
-                            <div className="pull-right project-started">{"Today"}</div>
-                        </div>
-
-
-                    </div>
-
-                    <div className="row ">
-
-                        <div className="col-md-12">
-                           <div className="project-days pull-right">{"6d 15h"}</div>
-                        </div>
+                        {/*<div className="col-md-12">*/}
+                            {/*<div className="pull-right project-started">{"Today"}</div>*/}
+                        {/*</div>*/}
 
 
-                    </div>
+                    {/*</div>*/}
 
-                </div>
+                    {/*<div className="row ">*/}
+
+                        {/*<div className="col-md-12">*/}
+                           {/*<div className="project-days pull-right">{"6d 15h"}</div>*/}
+                        {/*</div>*/}
+
+
+                    {/*</div>*/}
+
+                {/*</div>*/}
 
                 <div className="col-md-2">
 
