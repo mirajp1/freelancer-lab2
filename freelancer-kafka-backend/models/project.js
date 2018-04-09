@@ -16,7 +16,7 @@ var projectSchema = new Schema({
     status: {
         type:String,
         default:"OPEN",
-        enum:['OPEN','CLOSED']
+        enum:['OPEN',"HIRED",'CLOSED']
     },
     description:String,
     budget_range: {

@@ -172,6 +172,27 @@ export const placeBid = (token,data,params) =>{
         });
 }
 
+export const hire = (token,data,params) =>{
+
+    return fetch("/api/projects/"+params+"/hire", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Authorization': token,
+            'Content-Type': 'application/json',
+        },
+        credentials:'include',
+        body:JSON.stringify(data)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
 
 export const getAllOpenProjects = (token) =>{
 

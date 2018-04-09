@@ -12,6 +12,10 @@ export default function (state = INITIAL_STATE, action) {
             return { ...state, project:{...state.project,bids:action.payload} };
         case "PLACE_BID_ERROR":
             return {...state,error:action.payload.error};
+        case "HIRE":
+            return { ...state, project:{...state.project,freelancer:action.payload.freelancer} };
+        case "HIRE_ERROR":
+            return {...state,error:action.payload.error};
 
     }
 

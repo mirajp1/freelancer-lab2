@@ -5,6 +5,10 @@ import img_default from '../images/default.png';
 class BidderItem extends Component {
 
 
+    callHire(e){
+        e.preventDefault();
+        this.props.handleHire(this.props.details.bidder);
+    }
 
     render() {
         const {bidder} = this.props.details;
@@ -55,7 +59,7 @@ class BidderItem extends Component {
 
                     <div className="row">
 
-                        {this.props.allowHire && <a className="btn btn-info">Hire Me</a>}
+                        {this.props.allowHire && <a onClick={this.callHire.bind(this)} className="btn btn-info">Hire Me</a>}
 
                     </div>
 

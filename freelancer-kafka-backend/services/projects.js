@@ -234,7 +234,7 @@ module.exports = {
                             else {
                                 Project.findOneAndUpdate(
                                     {_id: req.params.id},
-                                    {freelancer: req.body.userId}, {new: true})
+                                    {freelancer: req.body.userId,status:"HIRED"}, {new: true})
                                     .then((project) => {
                                         if (project) {
                                             res.code = 201;

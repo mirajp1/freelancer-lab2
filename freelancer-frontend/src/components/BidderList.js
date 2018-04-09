@@ -65,7 +65,7 @@ class BidderList extends Component {
                     </div>
 
                     {bids.map(function (item,key){
-                      return (<BidderItem key={key} details={item} allowHire={this.props.allowHire}/>);
+                      return (<BidderItem handleHire={this.props.handleHire} key={key} details={item} allowHire={this.props.allowHire}/>);
                     }.bind(this) )}
 
                 </div>

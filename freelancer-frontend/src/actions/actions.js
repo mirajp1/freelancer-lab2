@@ -188,6 +188,35 @@ export function placeBid(token, data,params) {
 
 }
 
+export function hire(token, data,params) {
+
+    console.log("hire"+params);
+    return function(dispatch) {
+        API.hire(token,data,params)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"HIRE",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"HIRE_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
 export function fetchAllOpenProjects(token) {
 
     console.log("fetch all open project:");
