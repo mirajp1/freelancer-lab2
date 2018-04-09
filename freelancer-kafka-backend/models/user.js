@@ -6,6 +6,17 @@ var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
 
+var transactionSchema = new Schema({
+    from: { type: Schema.Types.ObjectId, ref: 'User' },
+    to: { type: Schema.Types.ObjectId, ref: 'User' },
+    project:{ type: Schema.Types.ObjectId, ref: 'User' },
+    amount:Number,
+    type: {
+        type:String,
+        enum:['ADD',"WITHDRAW",'TRANSFER']
+    },
+});
+
 // create a schema
 var userSchema = new Schema({
     name: String,
@@ -22,9 +33,11 @@ var userSchema = new Schema({
     about:{
         type:String,
     },
+    balance:{type:Number,default:0},
     projects: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
     bidded_projects:[{type:Schema.Types.ObjectId,ref:'Project'}],
-    skills:[{type:Schema.Types.ObjectId,ref:'Skill'}]
+    skills:[{type:Schema.Types.ObjectId,ref:'Skill'}],
+    transactions:[transactionSchema]
 });
 
 userSchema.pre('save', function(next) {
@@ -55,3 +68,4 @@ userSchema.methods.comparePassword = function(candidatePassword) {
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
+module.eports.transactionSchema = transactionSchema
