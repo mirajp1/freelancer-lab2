@@ -15,7 +15,12 @@ class SubmitSolution extends Component {
 
     handleInputChange(e){
         e.preventDefault();
-        this.setState({[e.target.name]:e.target.value})
+
+        if(e.target.name==="solution_file") {
+            this.setState({[e.target.name]: e.target.files[0]});
+        }
+        else
+            this.setState({[e.target.name]:e.target.value})
     }
 
 

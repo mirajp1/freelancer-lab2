@@ -129,6 +129,28 @@ export const updateProfile = (token,profile) =>{
         });
 }
 
+export const submitSolution = (token,solution,params) =>{
+
+    return fetch("/api/projects/"+params+"/solution", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Authorization': token,
+            'credentials':'true'
+        },
+        credentials:'include',
+        body: solution
+
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
 export const getProject = (token,params) =>{
 
     return fetch("/api/projects/"+params, {

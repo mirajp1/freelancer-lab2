@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../css/Project.css'
 import BidderList from "./BidderList";
-import {fetchProject, hire, placeBid} from "../actions/actions";
+import {fetchProject, hire, placeBid, submitSolution} from "../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Bid from "./Bid";
@@ -55,6 +55,9 @@ class Project extends Component{
 
         console.log("submit solution called");
         console.log(solution_file+":"+text);
+
+        this.props.submitSolution(localStorage.getItem("jwtToken"),formData,this.props.match.params.projectId)
+
     }
 
     makePayment(e){
@@ -302,22 +305,38 @@ class Project extends Component{
                             <div className="col-md-6">
                                 <div className="body-header">Submitted Solution</div>
                             </div>
+                            <div className="col-md-6">
+                                <button className="btn pull-right btn-primary btn-md" onClick={this.makePayment}>Make Payment</button>
+                            </div>
 
                         </div>
 
                         <div className="row">
+                            <div className="col-md-8">
+                                <p><div className="body-text">{this.props.project.solution.text}</div></p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="body-header">Files</div>
+                            </div>
+
+                        </div>
+                        <div className="row">
                             <div className="col-md-7">
-                                <p className="body-text">{this.props.project.solution ? <a href={this.props.project.solution}>Download</a>:"No Solution Yet!"}</p>
-                                <br/>
+                                <p className="body-text">{(this.props.project.solution && this.props.project.solution.solution_file)? <a href={this.props.project.solution.solution_file}>File Download</a>:"No Solution Yet!"}</p>
                             </div>
                         </div>
 
-                        <div className="row">
-                            <div className="col-md-7">
-                                <button className="btn btn-primary btn-lg" onClick={this.makePayment}>Make Payment</button>
-                                <br/>
-                            </div>
-                        </div>
+                        {/*<div className="row">*/}
+                            {/*<div className="col-md-7">*/}
+                                {/*<button className="btn btn-primary btn-lg" onClick={this.makePayment}>Make Payment</button>*/}
+                                {/*<br/>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
 
                     <br/>
 
@@ -325,56 +344,72 @@ class Project extends Component{
 
                 </div>}
 
-                <br/>
                 <br/>
 
                 {this.state.hired && this.state.employee && <div className="row">
                     <br/>
-                    <br/>
                     <div className="col-md-12 project-data">
+
+
 
                         {this.props.project.solution &&
 
+                        <div className="col-md-12">
+
                             <div className="row">
                                 <div className="col-md-6">
-                                    <div className="body-header">Submit your solution to the Employer</div>
+                                    <div className="body-header">Submitted Solution</div>
+                                </div>
+
+                            </div>
+                            <div className="row">
+                                <div className="col-md-8">
+                                    <p><div className="body-text">{this.props.project.solution.text}</div></p>
                                 </div>
 
                             </div>
 
-                            // <div className="row">
-                            //     <div className="col-md-7">
-                            //         <p className="body-text"><a href={this.props.project.solution}>Download</a></p>
-                            //         <br/>
-                            //     </div>
-                            // </div>
-                            //
-                            // <div className="row">
-                            //     <div className="col-md-7">
-                            //         <button className="btn btn-primary btn-lg" onClick={this.submitSolution}>Submit Solution</button>
-                            //         <br/>
-                            //     </div>
-                            // </div>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="body-header">Files</div>
+                                </div>
 
-                        // <br/>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <p className="body-text">{this.props.project.solution.solution_file ? <a href={this.props.project.solution.solution_file}>Download</a>:"No File Submitted"}</p>
+                                    <br/>
+                                </div>
+                            </div>
+
+                        </div>
+
                         }
 
                         {!this.props.project.solution &&
 
-                            <SubmitSolution submitSolution={this.submitSolution}/>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <SubmitSolution submitSolution={this.submitSolution}/>
+                                </div>
+
+                            </div>
 
                         }
+
 
                     </div>
 
                 </div>}
 
                 <br/>
-                <br/>
+                
 
                 <BidderList bids={bids? bids :[]} allowHire={this.state.allowHire} handleHire={this.hire}/>
 
-
+                <br/>
+                <br/>
             </div>
         )
     }
@@ -387,4 +422,4 @@ function mapStateToProps(state){
     }
 }
 
-export default withRouter(connect(mapStateToProps,{fetchProject,placeBid,hire})(Project));
+export default withRouter(connect(mapStateToProps,{fetchProject,placeBid,hire,submitSolution})(Project));

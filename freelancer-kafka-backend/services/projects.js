@@ -575,6 +575,7 @@ module.exports = {
     },
     submitSolution(req,cb){
         console.log(req.user);
+        console.log(req.file);
         console.log(req.body);
 
         let res ={}

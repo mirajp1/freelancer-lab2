@@ -217,6 +217,35 @@ export function hire(token, data,params) {
 
 }
 
+export function submitSolution(token,data,params) {
+
+    console.log("submit solution"+params);
+    return function(dispatch) {
+        API.submitSolution(token,data,params)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"SUBMIT_SOLUTION",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"SUBMIT_SOLUTION_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
 export function fetchAllOpenProjects(token) {
 
     console.log("fetch all open project:");
