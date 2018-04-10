@@ -44,7 +44,7 @@ module.exports = {
                 console.log(project);
                 if(err){
                     res.code = 400;
-                    res.value = error;
+                    res.value = {error:error};
                     cb(null,res);
                 }
                 else if(project){
@@ -121,20 +121,20 @@ module.exports = {
                                 })
                                 .catch(error => {
                                     res.code = 400;
-                                    res.value = error;
+                                    res.value = {error:error};
                                     cb(null,res);
                                 });
                         })
                         .catch(error => {
                             res.code = 400;
-                            res.value = error;
+                            res.value = {error:error};
                             cb(null,res);
                         });
 
                 })
                 .catch(error => {
                     res.code = 400;
-                    res.value = error;
+                    res.value = {error:error};
                     cb(null,res);
                 });
         }
@@ -177,7 +177,7 @@ module.exports = {
                                     })
                                     .catch(error => {
                                         res.code = 400;
-                                        res.value = error;
+                                        res.value = {error:error};
                                         cb(null, res);
                                     });
                             }
@@ -281,7 +281,7 @@ module.exports = {
                 console.log(projects);
                 if(err){
                     res.code = 400;
-                    res.value = error;
+                    res.value = {error:err};
                     cb(null,res);
                 }
                 else if(projects){
@@ -316,7 +316,7 @@ module.exports = {
                 console.log(projects);
                 if(err){
                     res.code = 400;
-                    res.value = error;
+                    res.value = {error:err};
                     cb(null,res);
                 }
                 else if(projects){
@@ -354,7 +354,7 @@ module.exports = {
                 console.log(projects);
                 if(err){
                     res.code = 400;
-                    res.value = error;
+                    res.value = {error:err};
                     cb(null,res);
                 }
                 else if(projects){
@@ -403,7 +403,7 @@ module.exports = {
                         console.log(projects);
                         if(err){
                             res.code = 400;
-                            res.value = err;
+                            res.value = {error:err};
                             cb(null,res);
                         }
                         else if(projects){
@@ -421,7 +421,7 @@ module.exports = {
                                     console.log(projects);
                                     if(err){
                                         res.code = 400;
-                                        res.value = err;
+                                        res.value = {error:err};
                                         cb(null,res);
                                     }
                                     else if(projects){
@@ -455,5 +455,167 @@ module.exports = {
             })
 
     },
+    makePayment(req,cb){
+        console.log(req.user);
+        console.log(req.body);
+
+        let res ={}
+
+        let transaction={
+            from: req.user._id,
+            project:req.params.id,
+            type: 'TRANSFER',
+        }
+
+
+        Project.findOne({_id:req.params.id,"bids.bidder":req.user._id})
+            .then((project)=>{
+                if(project && project.freelancer){
+                    transaction.to=project.freelancer;
+                    project.bids.some(function(item){
+                        if(item.bidder.equals(mongoose.Types.ObjectId(''+project.freelancer))){
+                            transaction.amount=item.bid_amount;
+                            console.log("found the bid!");
+                            return true;
+                        }
+                    })
+
+                    User.findOne({_id:req.user._id})
+                        .then((user)=>{
+
+                            if(user.balance < transaction.amount){
+                                res.code=400;
+                                res.value={error:"Not enough balance to transfer"}
+                                cb(null,res);
+                            }
+                            else{
+                                User.findOneAndUpdate(
+                                    {_id: req.user._id},
+                                    {
+                                        $inc: {balance: -1*transaction.amount},
+                                        $push: {transactions: transaction}
+                                    }
+                                    ,
+                                    {new: true})
+                                    .populate('skills')
+                                    .exec((err, user) => {
+                                        if (err) {
+                                            res.code = 400;
+                                            res.value = {error: err};
+                                            cb(null, res);
+                                        }
+                                        else if (user) {
+
+                                            User.findOneAndUpdate(
+                                                {_id: transaction.to},
+
+                                                {
+                                                    $inc: {balance: transaction.amount},
+                                                    $push: {transactions: transaction}
+                                                }
+                                                ,
+                                                {new: true})
+                                                .populate('skills')
+                                                .exec((err, user) => {
+                                                    if (err) {
+                                                        res.code = 400;
+                                                        res.value = {error: err};
+                                                        cb(null, res);
+                                                    }
+                                                    else if (user) {
+                                                        Project.findOneAndUpdate(
+                                                            {_id:req.params.id},
+                                                            {status:"CLOSED"},{new:true}
+                                                            )
+                                                            .then((project)=>{
+                                                                res.code=200;
+                                                                res.value=project;
+                                                                cb(null,res);
+                                                            })
+                                                            .catch(error => {
+                                                                res.code = 400;
+                                                                res.value = error;
+                                                                cb(null,res);
+                                                            });
+                                                    }
+                                                    else {
+                                                        res.code = 404;
+                                                        res.value = {error: "user not found!"};
+                                                        cb(null, res);
+                                                    }
+                                                })
+
+                                        }
+                                        else {
+                                            res.code = 404;
+                                            res.value = {error: "user not found!"};
+                                            cb(null, res);
+                                        }
+                                    })
+                            }
+
+                        })
+                        .catch(error => {
+                            res.code = 400;
+                            res.value = error;
+                            cb(null,res);
+                        });
+
+                }
+                else{
+                    res.code = 400;
+                    res.value = {error:"Bid not found for this user on this project"};
+                    cb(null,res);
+                }
+            })
+
+
+
+
+    },
+    submitSolution(req,cb){
+        console.log(req.user);
+        console.log(req.body);
+
+        let res ={}
+
+        if(req.body && req.body.text===""){
+            res.code = 400;
+            res.value = {error:"Cannot have empty solution name"};
+            cb(null,res);
+        }
+        else{
+
+
+            var filePath="";
+            if(req.file) {
+                var filePath="/uploads/project/"+req.file.filename;
+            }
+
+            var solution = {
+                text:req.body.text,
+            }
+            if(filePath!=="")
+                solution.solution_file=filePath
+
+
+            Project.findOneAndUpdate({_id:req.params.id},{solution:solution,status:"CLOSED"},{new:true})
+                .then((project)=> {
+
+                    res.code=200;
+                    res.value=project;
+                    cb(null,res);
+
+                })
+                .catch(error => {
+                    res.code = 400;
+                    res.value = {error:error};
+                    cb(null,res);
+                });
+
+
+        }
+
+    }
 
 };

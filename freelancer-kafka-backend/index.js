@@ -18,7 +18,11 @@ var projectBid = new connection().getConsumer('project_bid');
 var retrieveProfile = new connection().getConsumer('retrieve_profile');
 var updateProfile = new connection().getConsumer('update_profile');
 var projectHire = new connection().getConsumer('project_hire');
+var projectMakePayment = new connection().getConsumer('makepayment_topic');
+var addMoney = new connection().getConsumer('addmoney_topic');
+var withdrawMoney = new connection().getConsumer('withdrawmoney_topic');
 var retrieveRelevantProjects = new connection().getConsumer('retrieve_all_relevant_projects');
+var submitSolution = new connection().getConsumer('submit_solution_topic');
 var producer = new connection().getProducer();
 
 mongoose.connect('mongodb://freelancer273:freelancer273@ds135619.mlab.com:35619/freelancer-lab2');
@@ -309,6 +313,98 @@ projectHire.on('message', function (message) {
     console.log(JSON.stringify(message.value));
     var data = JSON.parse(message.value);
     projects.hire(data.data, function(err,res){
+        console.log('after handle');
+        console.log(res);
+        var payloads = [
+            { topic: data.replyTo,
+                messages:JSON.stringify({
+                    correlationId:data.correlationId,
+                    data : res
+                }),
+                partition : 0
+            }
+        ];
+        producer.send(payloads, function(err, data){
+            console.log(data);
+        });
+        return;
+    });
+});
+
+addMoney.on('message', function (message) {
+    console.log('add money message received');
+    console.log(JSON.stringify(message.value));
+    var data = JSON.parse(message.value);
+    users.addMoney(data.data, function(err,res){
+        console.log('after handle');
+        console.log(res);
+        var payloads = [
+            { topic: data.replyTo,
+                messages:JSON.stringify({
+                    correlationId:data.correlationId,
+                    data : res
+                }),
+                partition : 0
+            }
+        ];
+        producer.send(payloads, function(err, data){
+            console.log(data);
+        });
+        return;
+    });
+});
+
+withdrawMoney.on('message', function (message) {
+    console.log('withdraw message received');
+    console.log(JSON.stringify(message.value));
+    var data = JSON.parse(message.value);
+    users.withdrawMoney(data.data, function(err,res){
+        console.log('after handle');
+        console.log(res);
+        var payloads = [
+            { topic: data.replyTo,
+                messages:JSON.stringify({
+                    correlationId:data.correlationId,
+                    data : res
+                }),
+                partition : 0
+            }
+        ];
+        producer.send(payloads, function(err, data){
+            console.log(data);
+        });
+        return;
+    });
+});
+
+projectMakePayment.on('message', function (message) {
+    console.log('make payment message received');
+    console.log(JSON.stringify(message.value));
+    var data = JSON.parse(message.value);
+    projects.makePayment(data.data, function(err,res){
+        console.log('after handle');
+        console.log(res);
+        var payloads = [
+            { topic: data.replyTo,
+                messages:JSON.stringify({
+                    correlationId:data.correlationId,
+                    data : res
+                }),
+                partition : 0
+            }
+        ];
+        producer.send(payloads, function(err, data){
+            console.log(data);
+        });
+        return;
+    });
+});
+
+submitSolution.on('message', function (message) {
+    console.log('submit soluton message received');
+    console.log(JSON.stringify(message.value));
+    var data = JSON.parse(message.value);
+    projects.submitSolution(data.data, function(err,res){
         console.log('after handle');
         console.log(res);
         var payloads = [

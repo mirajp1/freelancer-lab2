@@ -97,6 +97,40 @@ module.exports = {
         //     });
         // }
 
-    }
+    },
+    addMoney(req, res) {
+        console.log(req.body);
+        console.log(req.file);
+
+        kafka.make_request('addmoney_topic', {body: req.body, user: req.user, params: req.params}, function (err, results) {
+            console.log('in addmoney_topic profile cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
+    withdrawMoney(req, res) {
+        console.log(req.body);
+        console.log(req.file);
+
+        kafka.make_request('withdrawmoney_topic', {body: req.body, user: req.user, params: req.params}, function (err, results) {
+            console.log('in withdrawmoney_topic cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
 
 }

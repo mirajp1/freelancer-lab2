@@ -5,6 +5,7 @@ import {fetchProject, hire, placeBid} from "../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Bid from "./Bid";
+import SubmitSolution from "./SubmitSolution";
 
 class Project extends Component{
 
@@ -15,15 +16,17 @@ class Project extends Component{
             showBidBlock:false,
             allowBid:true,
             allowHire:true,
-            hired:false
+            hired:false,
+            employer:false,
+            employee:false,
         }
         this.hire=this.hire.bind(this);
+        this.makePayment=this.makePayment.bind(this);
+        this.submitSolution=this.submitSolution.bind(this);
     }
 
     componentDidMount(){
         console.log(this.props.match);
-
-
 
         this.props.fetchProject(localStorage.getItem("jwtToken"),this.props.match.params.projectId);
     }
@@ -40,6 +43,24 @@ class Project extends Component{
         this.setState({showBidBlock:false});
 
 
+    }
+
+    submitSolution(data){
+
+        const {solution_file,text} = data
+        let formData = new FormData();
+
+        formData.append('text', text);
+        formData.append('solution_file', solution_file);
+
+        console.log("submit solution called");
+        console.log(solution_file+":"+text);
+    }
+
+    makePayment(e){
+        e.preventDefault();
+
+        console.log("make payment called");
     }
 
     cancelBid(){
@@ -103,6 +124,31 @@ class Project extends Component{
                 this.setState({allowHire:false});
             }
         }
+
+        //check employer
+        if(this.props.project && !this.state.employer){
+            const {creator} = this.props.project;
+            let user = localStorage.getItem('userId');
+
+
+            if(creator && creator._id == user ){
+                console.log("you are creator")
+                this.setState({employer:true});
+            }
+        }
+
+        //check employee
+        if(this.props.project && !this.state.employee){
+            const {freelancer} = this.props.project;
+            let user = localStorage.getItem('userId');
+
+
+            if(freelancer && freelancer._id == user ){
+                console.log("you are freelancer")
+                this.setState({employee:true});
+            }
+        }
+
 
         //check hired
         if(this.props.project && !this.state.hired){
@@ -242,6 +288,82 @@ class Project extends Component{
                         </div>
 
 
+
+                    </div>
+
+                </div>}
+
+                {this.state.hired && this.state.employer && <div className="row">
+                    <br/>
+                    <br/>
+                    <div className="col-md-12 project-data">
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="body-header">Submitted Solution</div>
+                            </div>
+
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-7">
+                                <p className="body-text">{this.props.project.solution ? <a href={this.props.project.solution}>Download</a>:"No Solution Yet!"}</p>
+                                <br/>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-7">
+                                <button className="btn btn-primary btn-lg" onClick={this.makePayment}>Make Payment</button>
+                                <br/>
+                            </div>
+                        </div>
+
+                    <br/>
+
+                    </div>
+
+                </div>}
+
+                <br/>
+                <br/>
+
+                {this.state.hired && this.state.employee && <div className="row">
+                    <br/>
+                    <br/>
+                    <div className="col-md-12 project-data">
+
+                        {this.props.project.solution &&
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="body-header">Submit your solution to the Employer</div>
+                                </div>
+
+                            </div>
+
+                            // <div className="row">
+                            //     <div className="col-md-7">
+                            //         <p className="body-text"><a href={this.props.project.solution}>Download</a></p>
+                            //         <br/>
+                            //     </div>
+                            // </div>
+                            //
+                            // <div className="row">
+                            //     <div className="col-md-7">
+                            //         <button className="btn btn-primary btn-lg" onClick={this.submitSolution}>Submit Solution</button>
+                            //         <br/>
+                            //     </div>
+                            // </div>
+
+                        // <br/>
+                        }
+
+                        {!this.props.project.solution &&
+
+                            <SubmitSolution submitSolution={this.submitSolution}/>
+
+                        }
 
                     </div>
 

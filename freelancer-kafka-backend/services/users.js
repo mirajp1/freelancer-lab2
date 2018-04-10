@@ -119,5 +119,128 @@ module.exports = {
         //     .catch(error=> res.status(400).send({"error":"user not found"}));
 
 
-    }
+    },
+    addMoney(req,cb){
+        console.log(req.user);
+        console.log(req.body);
+
+        let res={};
+
+        let transaction={
+            amount:req.body.amount,
+            type: "ADD",
+        }
+
+        if(req.body && !req.body.amount){
+            res.code = 400;
+            res.value = {error:"cannot have empty amount"};
+            cb(null,res);
+        }
+        else if(req.body && req.body.amount && req.body.amount<=0){
+            res.code = 400;
+            res.value = {error:"Amount should be greater than 0!"};
+            cb(null,res);
+        }
+        else {
+
+            User.findOneAndUpdate(
+                {_id: req.user._id},
+
+                {
+                    $inc: {balance: req.body.amount},
+                    $push: {transactions: transaction}
+                }
+                ,
+                {new: true})
+                .populate('skills')
+                .exec((err, user) => {
+                    if (err) {
+                        res.code = 400;
+                        res.value = {error: error};
+                        cb(null, res);
+                    }
+                    else if (user) {
+                        res.code = 200;
+                        res.value = user;
+                        cb(null, res);
+                    }
+                    else {
+                        res.code = 404;
+                        res.value = {error: "user not found!"};
+                        cb(null, res);
+                    }
+                })
+        }
+    },
+    withdrawMoney(req,cb){
+        console.log(req.user);
+        console.log(req.body);
+
+        let res ={}
+
+        let transaction={
+            amount:req.body.amount,
+            type: "WITHDRAW",
+        }
+
+        if(req.body && !req.body.amount){
+            res.code = 400;
+            res.value = {error:"cannot have empty amount"};
+            cb(null,res);
+        }
+        else if(req.body && req.body.amount && req.body.amount<=0){
+            res.code = 400;
+            res.value = {error:"Amount should be greater than 0!"};
+            cb(null,res);
+        }
+        else {
+
+            User.findOne({_id:req.user._id})
+                .then((user)=>{
+
+                    if(user.balance < req.body.amount){
+                        res.code=400;
+                        res.value={error:"Not enough balance to withdraw"}
+                        cb(null,res);
+                    }
+                    else{
+                        User.findOneAndUpdate(
+                            {_id: req.user._id},
+
+                            {
+                                $inc: {balance: -1*transaction.amount},
+                                $push: {transactions: transaction}
+                            }
+                            ,
+                            {new: true})
+                            .populate('skills')
+                            .exec((err, user) => {
+                                if (err) {
+                                    res.code = 400;
+                                    res.value = {error: error};
+                                    cb(null, res);
+                                }
+                                else if (user) {
+                                    res.code = 200;
+                                    res.value = user;
+                                    cb(null, res);
+                                }
+                                else {
+                                    res.code = 404;
+                                    res.value = {error: "user not found!"};
+                                    cb(null, res);
+                                }
+                            })
+                    }
+
+                })
+                .catch(error => {
+                    res.code = 400;
+                    res.value = error;
+                    cb(null,res);
+                });
+
+
+        }
+    },
 };

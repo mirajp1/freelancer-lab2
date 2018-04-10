@@ -7,8 +7,13 @@ var Schema = mongoose.Schema;
 var bidSchema = new Schema({
     bid_amount:Number,
     days:Number,
-    bidder:{type:Schema.Types.ObjectId,ref:'User'}
-});
+    bidder:{type:Schema.Types.ObjectId,ref:'User'},
+},{timestamps:true});
+
+var solutionSchema = new Schema({
+    text:String,
+    solution_file:String,
+},{timestamps:true});
 
 // create a schema
 var projectSchema = new Schema({
@@ -28,8 +33,9 @@ var projectSchema = new Schema({
     freelancer: { type: Schema.Types.ObjectId, ref: 'User' },
     creator: { type: Schema.Types.ObjectId, ref: 'User' },
     bids:[bidSchema],
-    skills:[{type:Schema.Types.ObjectId,ref:'Skill'}]
-});
+    skills:[{type:Schema.Types.ObjectId,ref:'Skill'}],
+    solution:solutionSchema
+},{timestamps:true});
 
 
 

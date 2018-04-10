@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43d49fd-7662-4dc7-a574-656aff3ad448" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/freelancer-backend/controllers/profiles.js" afterPath="$PROJECT_DIR$/freelancer-backend/controllers/profiles.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-backend/controllers/projects.js" afterPath="$PROJECT_DIR$/freelancer-backend/controllers/projects.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-backend/routes/profile.js" afterPath="$PROJECT_DIR$/freelancer-backend/routes/profile.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-backend/routes/project.js" afterPath="$PROJECT_DIR$/freelancer-backend/routes/project.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-frontend/src/components/Project.js" afterPath="$PROJECT_DIR$/freelancer-frontend/src/components/Project.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/index.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/index.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/models/project.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/models/project.js" />
       <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/models/user.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/models/user.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js" />
+      <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/services/users.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/services/users.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,38 +29,28 @@
       <file leaf-file-name="Project.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/Project.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4050">
-              <caret line="231" column="77" lean-forward="false" selection-start-line="231" selection-start-column="77" selection-end-line="231" selection-end-column="77" />
+            <state relative-caret-position="347">
+              <caret line="56" column="42" lean-forward="false" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/user.js">
+      <file leaf-file-name="SubmitSolution.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/SubmitSolution.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+            <state relative-caret-position="126">
+              <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/actions/actions.js">
+      <file leaf-file-name="project.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/project.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3420">
-              <caret line="190" column="20" lean-forward="false" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projects.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4248">
-              <caret line="236" column="78" lean-forward="false" selection-start-line="236" selection-start-column="78" selection-end-line="236" selection-end-column="78" />
+            <state relative-caret-position="198">
+              <caret line="11" column="89" lean-forward="false" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -60,28 +59,18 @@
       <file leaf-file-name="project.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/project.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="6" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="372">
+              <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/reducer/project.js">
+      <file leaf-file-name="projects.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="93" lean-forward="false" selection-start-line="15" selection-start-column="93" selection-end-line="15" selection-end-column="93" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/api/auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2754">
-              <caret line="153" column="16" lean-forward="false" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
+            <state relative-caret-position="520">
+              <caret line="615" column="0" lean-forward="false" selection-start-line="615" selection-start-column="0" selection-end-line="615" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -98,11 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>password`</find>
-      <find>p</find>
-      <find>topic_name</find>
-      <find>callback</find>
-      <find>push</find>
       <find>email</find>
       <find>skills</find>
       <find>freela</find>
@@ -123,9 +107,16 @@
       <find>cooki</find>
       <find>retrie</find>
       <find>hire me</find>
-      <find>bid</find>
-      <find>hire</find>
       <find>:</find>
+      <find>push</find>
+      <find>hire</find>
+      <find>return fa</find>
+      <find>dec</find>
+      <find>err</find>
+      <find>balanc</find>
+      <find>bid</find>
+      <find>file</find>
+      <find>submi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,7 +132,6 @@
         <option value="$PROJECT_DIR$/freelancer-backend/routes/auth.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/config/passport.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/app.js" />
-        <option value="$PROJECT_DIR$/freelancer-kafka-backend/services/users.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/kafka/kafkarpc.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/App.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/passport/index.js" />
@@ -150,7 +140,6 @@
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/SkillsList.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Header.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Profile.js" />
-        <option value="$PROJECT_DIR$/freelancer-backend/controllers/profiles.js" />
         <option value="$PROJECT_DIR$/freelancer-kafka-backend/services/profiles.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js" />
@@ -164,18 +153,22 @@
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/ProjectItem.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/ProjectList.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/css/ProjectList.css" />
-        <option value="$PROJECT_DIR$/freelancer-backend/routes/project.js" />
-        <option value="$PROJECT_DIR$/freelancer-backend/controllers/projects.js" />
-        <option value="$PROJECT_DIR$/freelancer-kafka-backend/index.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/BidderList.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/BidderItem.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/api/auth.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/actions/actions.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/reducer/project.js" />
-        <option value="$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js" />
-        <option value="$PROJECT_DIR$/freelancer-kafka-backend/models/project.js" />
-        <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Project.js" />
+        <option value="$PROJECT_DIR$/freelancer-backend/controllers/profiles.js" />
+        <option value="$PROJECT_DIR$/freelancer-backend/routes/profile.js" />
         <option value="$PROJECT_DIR$/freelancer-kafka-backend/models/user.js" />
+        <option value="$PROJECT_DIR$/freelancer-kafka-backend/services/users.js" />
+        <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Project.js" />
+        <option value="$PROJECT_DIR$/freelancer-frontend/src/components/SubmitSolution.js" />
+        <option value="$PROJECT_DIR$/freelancer-kafka-backend/models/project.js" />
+        <option value="$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js" />
+        <option value="$PROJECT_DIR$/freelancer-backend/controllers/projects.js" />
+        <option value="$PROJECT_DIR$/freelancer-kafka-backend/index.js" />
+        <option value="$PROJECT_DIR$/freelancer-backend/routes/project.js" />
       </list>
     </option>
   </component>
@@ -212,7 +205,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,6 +216,12 @@
               <item name="lab2" type="b2602c69:ProjectViewProjectNode" />
               <item name="lab2" type="462c0819:PsiDirectoryNode" />
               <item name="freelancer-backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab2" type="462c0819:PsiDirectoryNode" />
+              <item name="freelancer-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lab2" type="b2602c69:ProjectViewProjectNode" />
@@ -302,6 +300,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -311,16 +310,16 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/freelancer-kafka-backend/services" />
-      <recent name="$PROJECT_DIR$/freelancer-backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/freelancer-frontend/src/components" />
       <recent name="$PROJECT_DIR$/freelancer-kafka-backend/services" />
       <recent name="$PROJECT_DIR$/freelancer-kafka-backend/models" />
       <recent name="$PROJECT_DIR$/freelancer-kafka-backend" />
       <recent name="$PROJECT_DIR$/freelancer-backend/routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/freelancer-kafka-backend/services" />
+      <recent name="$PROJECT_DIR$/freelancer-backend" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -353,15 +352,17 @@
       <workItem from="1523065102826" duration="165000" />
       <workItem from="1523209033323" duration="5832000" />
       <workItem from="1523216853100" duration="14017000" />
-      <workItem from="1523299055098" duration="82000" />
+      <workItem from="1523299055098" duration="6757000" />
+      <workItem from="1523308839130" duration="14116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95827000" />
+    <option name="totallyTimeSpent" value="116618000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1313" height="780" extended-state="6" />
+    <frame x="55" y="-4" width="1311" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21350932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -370,7 +371,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.49689442" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.49689442" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -395,27 +396,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-frontend/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/SkillsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -451,13 +431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-backend/controllers/profiles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="101" column="1" lean-forward="false" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/ProjectDashboardList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -472,23 +445,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/AddProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/ProjectDashboardItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="20" column="100" lean-forward="false" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/ProjectFreelancerDashboardItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
           <caret line="20" column="100" lean-forward="false" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
         </state>
       </provider>
@@ -546,6 +505,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="37" column="48" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -553,6 +515,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -560,6 +523,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1114" column="4" lean-forward="false" selection-start-line="1114" selection-start-column="4" selection-end-line="1114" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -574,13 +538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/skill.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -588,13 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5256">
-          <caret line="307" column="29" lean-forward="false" selection-start-line="307" selection-start-column="29" selection-end-line="307" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -648,41 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-backend/controllers/projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="307" column="4" lean-forward="false" selection-start-line="307" selection-start-column="4" selection-end-line="307" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-812">
-          <caret line="38" column="20" lean-forward="true" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/profiles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/BidderList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -713,42 +629,145 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js">
+    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/actions/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4248">
-          <caret line="236" column="78" lean-forward="false" selection-start-line="236" selection-start-column="78" selection-end-line="236" selection-end-column="78" />
+        <state relative-caret-position="18">
+          <caret line="190" column="20" lean-forward="false" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/actions/actions.js">
+    <entry file="file://$PROJECT_DIR$/freelancer-backend/controllers/profiles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="190" column="20" lean-forward="false" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="20" />
+        <state relative-caret-position="2196">
+          <caret line="122" column="47" lean-forward="false" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/skill.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2484">
+          <caret line="138" column="64" lean-forward="false" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/Bid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/Project.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="231" column="77" lean-forward="false" selection-start-line="231" selection-start-column="77" selection-end-line="231" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="6" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+        <state relative-caret-position="347">
+          <caret line="56" column="42" lean-forward="false" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/profiles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="65" column="34" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="65" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/ProjectFreelancerDashboardItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="20" column="100" lean-forward="false" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="24" column="72" lean-forward="false" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-backend/controllers/projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="339" column="0" lean-forward="true" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/AddProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="42" column="64" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="42" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/services/projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="615" column="0" lean-forward="false" selection-start-line="615" selection-start-column="0" selection-end-line="615" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/models/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-frontend/src/components/SubmitSolution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-backend/routes/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="89" lean-forward="false" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
           <folding />
         </state>
       </provider>

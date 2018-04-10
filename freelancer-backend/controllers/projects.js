@@ -321,4 +321,34 @@ module.exports = {
         });
     },
 
+    payment(req, res) {
+
+        kafka.make_request('makepayment_topic', {body: req.body,user:req.user,params:req.params}, function (err, results) {
+            console.log('in makepayment_topic cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
+    submitSolution(req, res) {
+
+        kafka.make_request('submit_solution_topic', {body: req.body,user:req.user,params:req.params,file:req.file}, function (err, results) {
+            console.log('in submit_solution_topic cb');
+            console.log(results);
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            else {
+                res.status(results.code).send(results.value);
+
+            }
+        });
+    },
 };

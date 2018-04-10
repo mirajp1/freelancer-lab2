@@ -15,7 +15,7 @@ var transactionSchema = new Schema({
         type:String,
         enum:['ADD',"WITHDRAW",'TRANSFER']
     },
-});
+},{timestamps:true});
 
 // create a schema
 var userSchema = new Schema({
@@ -38,7 +38,7 @@ var userSchema = new Schema({
     bidded_projects:[{type:Schema.Types.ObjectId,ref:'Project'}],
     skills:[{type:Schema.Types.ObjectId,ref:'Skill'}],
     transactions:[transactionSchema]
-});
+},{timestamps:true});
 
 userSchema.pre('save', function(next) {
     var user = this;
@@ -68,4 +68,4 @@ userSchema.methods.comparePassword = function(candidatePassword) {
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
-module.eports.transactionSchema = transactionSchema
+module.exports.transactionSchema = transactionSchema
