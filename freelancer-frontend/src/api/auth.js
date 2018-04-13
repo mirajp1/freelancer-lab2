@@ -62,6 +62,67 @@ export const signup = (payload) =>{
             return error;
         });
 }
+export const addMoney = (payload) =>{
+
+    return fetch("/api/profile/addmoney", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+            'credentials':'true'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
+export const withdrawMoney = (payload) =>{
+
+    return fetch("/api/profile/withdrawmoney", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+            'credentials':'true'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
+export const makePayment = (params) =>{
+
+    return fetch("/api/projects/"+params+"/payment", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+            'credentials':'true'
+        },
+        credentials:'include',
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
 
 export const getProfile = (token,params) =>{
 

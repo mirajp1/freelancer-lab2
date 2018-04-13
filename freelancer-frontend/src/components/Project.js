@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../css/Project.css'
 import BidderList from "./BidderList";
-import {fetchProject, hire, placeBid, submitSolution} from "../actions/actions";
+import {fetchProject, hire, makePayment, placeBid, submitSolution} from "../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Bid from "./Bid";
@@ -64,6 +64,9 @@ class Project extends Component{
         e.preventDefault();
 
         console.log("make payment called");
+
+        this.props.makePayment(this.props.match.params.projectId)
+
     }
 
     cancelBid(){
@@ -305,15 +308,15 @@ class Project extends Component{
                             <div className="col-md-6">
                                 <div className="body-header">Submitted Solution</div>
                             </div>
-                            <div className="col-md-6">
+                            {this.props.project.status!=="CLOSED" &&<div className="col-md-6">
                                 <button className="btn pull-right btn-primary btn-md" onClick={this.makePayment}>Make Payment</button>
-                            </div>
+                            </div>}
 
                         </div>
 
                         <div className="row">
                             <div className="col-md-8">
-                                <p><div className="body-text">{this.props.project.solution.text}</div></p>
+                                <p><div className="body-text">{this.props.project.solution && this.props.project.solution.text}</div></p>
                             </div>
 
                         </div>
@@ -422,4 +425,4 @@ function mapStateToProps(state){
     }
 }
 
-export default withRouter(connect(mapStateToProps,{fetchProject,placeBid,hire,submitSolution})(Project));
+export default withRouter(connect(mapStateToProps,{fetchProject,placeBid,hire,submitSolution,makePayment})(Project));

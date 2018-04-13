@@ -13,6 +13,7 @@ import Project from "./components/Project";
 import DashBoard from "./components/DashBoard";
 
 import * as API from './api/auth';
+import Wallet from "./components/Wallet";
 
 class App extends Component {
 
@@ -97,6 +98,18 @@ class App extends Component {
                       return null;
                   }
                   return <DashBoard/>
+
+              }
+              }
+              />
+
+              <Route path={"/wallet"} render={() => {
+
+                  if (!this.isLoggedIn()) {
+                      this.redirectToLogin();
+                      return null;
+                  }
+                  return <Wallet/>
 
               }
               }

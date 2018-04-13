@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Project = require('../models').Project;
 const User = require('../models').User;
 const Skill = require('../models').Skill;
+const emailer = require('./email');
+
 
 function projectsAvgBid(projects,callback){
 
@@ -240,6 +242,17 @@ module.exports = {
                                             res.code = 201;
                                             res.value = project;
                                             cb(null, res);
+
+                                            let to = project.freelancer.email;
+                                            let text="You have been hired for the project: "+project.name;
+                                            emailer.sendMail(to,text,(err,info)=>{
+                                                if (error) {
+                                                    console.log(error);
+                                                } else {
+                                                    console.log('Email sent: ' + info.response);
+                                                }
+                                            })
+
                                         }
                                         else {
                                             res.code = 404;
@@ -468,7 +481,7 @@ module.exports = {
         }
 
 
-        Project.findOne({_id:req.params.id,"bids.bidder":req.user._id})
+        Project.findOne({_id:req.params.id})
             .then((project)=>{
                 if(project && project.freelancer){
                     transaction.to=project.freelancer;
@@ -600,7 +613,7 @@ module.exports = {
                 solution.solution_file=filePath
 
 
-            Project.findOneAndUpdate({_id:req.params.id},{solution:solution,status:"CLOSED"},{new:true})
+            Project.findOneAndUpdate({_id:req.params.id},{solution:solution},{new:true})
                 .then((project)=> {
 
                     res.code=200;

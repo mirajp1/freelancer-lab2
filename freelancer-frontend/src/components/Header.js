@@ -25,6 +25,7 @@ class HomeHeader extends Component {
                         <ul className="nav navbar-nav">
                             <li ><a href="/profile">Profile</a></li>
                             <li><a href="/dashboard">DashBoard</a></li>
+                            <li><a href="/wallet">Transaction Manager</a></li>
 
                         </ul>
 

@@ -1,0 +1,35 @@
+By default, the haproxy uses "Roundrobin" algorithm for load balancing between containers. This creates a problem in our code because while processing orders, we take all messages from the queue and then update the status of orders in the local in-memory map data structure. 
+
+Now, because of round robin, our requests for placing order went to both containers (1 and 2 orders in both containers respectively)
+
+This is evident from the first two calls to get orders.
+
+Now process-order request goes to the container with 1 order, it fetches orderIds from the queue(3 ids) and updates it in memory map to "order processed". But it does not have the Ids in it map so call to:
+
+"var ord = orders[order_id] "
+
+returns empty order object and this orders map is returned back as response of the api.
+
+
+
+The next get-order request goes to another container and it only has 2 orders in it's map with status "order placed"
+
+The last get-order request goes to the original container whose map now contains few orders with empty IDs.
+
+
+
+The solution to this problem is:
+
+1) Infrastructure:
+
+We can configure our haproxy container to have load balancing with "source" algorithm which tries to forward requests from same client to the same server. This can be done by setting the environment variable "BALANCE" to "source" in the .yml config file.
+
+
+
+2) Code:
+
+The problem arises due to storing of orders in-memory data structure which can't be shared between the replicated containers.
+
+We can eliminate the problem by storing the orders in our mongodb and querying the results from the database itself when required. This way, the shared db will make sure that there is common data sharing between all the containers and so right orders will be processed/status returned.
+
+

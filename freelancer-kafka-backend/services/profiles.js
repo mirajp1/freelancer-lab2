@@ -9,6 +9,9 @@ module.exports = {
         let res = {}
         User.findOne({_id:req.user._id})
             .populate('skills')
+            .populate('transactions.to')
+            .populate('transactions.from')
+            .populate('transactions.project')
             .exec((err,user)=>{
                 if(err){
                     res.code = 400;

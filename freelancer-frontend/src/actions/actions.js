@@ -91,10 +91,18 @@ export function fetchProfile(token, params) {
             .then(res => {
                 console.log(res);
 
-                dispatch({
-                    type:"GET_PROFILE",
-                    payload:res
-                });
+                if (!res.error) {
+                    dispatch({
+                        type: "GET_PROFILE",
+                        payload: res
+                    });
+                }
+                else  {
+                    dispatch({
+                        type: "GET_PROFILE_ERROR",
+                        payload: res
+                    });
+                }
 
             })
 
@@ -178,6 +186,93 @@ export function placeBid(token, data,params) {
                     console.log(res.error);
                     dispatch({
                         type:"PLACE_BID_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
+export function addMoney(data) {
+
+    console.log("add money");
+    return function(dispatch) {
+        API.addMoney(data)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"ADD_MONEY",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"ADD_MONEY_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
+export function withdrawMoney(data) {
+
+    console.log("withdraw money");
+    return function(dispatch) {
+        API.withdrawMoney(data)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"WITHDRAW_MONEY",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"WITHDRAW_MONEY_ERROR",
+                        payload:res
+                    });
+                }
+
+            })
+
+    }
+
+}
+
+export function makePayment(params) {
+
+    console.log("make payment");
+    return function(dispatch) {
+        API.makePayment(params)
+            .then(res => {
+                console.log(res);
+
+                if(!res.error){
+                    console.log("no error");
+                    dispatch({
+                        type:"MAKE_PAYMENT",
+                        payload:res
+                    });
+                }
+                else{
+                    console.log(res.error);
+                    dispatch({
+                        type:"MAKE_PAYMENT_ERROR",
                         payload:res
                     });
                 }

@@ -6,6 +6,8 @@ export default function (state = INITIAL_STATE, action) {
     switch(action.type) {
         case "GET_PROJECT":
             return { ...state, project:action.payload };
+        case "MAKE_PAYMENT":
+            return { ...state, project:{...state.project,status:action.payload.status} };
         case "GET_PROJECT_ERROR":
             return {...state,project:{},error:action.payload.error};
         case "PLACE_BID":
@@ -20,6 +22,8 @@ export default function (state = INITIAL_STATE, action) {
             return { ...state, project:action.payload};
         case "SUBMIT_SOLUTION_ERROR":
             return {...state,error:action.payload.error};
+        case "MAKE_PAYMENT_ERROR":
+                    return {...state,error:action.payload.error};
 
     }
 

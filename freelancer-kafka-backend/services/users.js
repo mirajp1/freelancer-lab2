@@ -153,6 +153,9 @@ module.exports = {
                 ,
                 {new: true})
                 .populate('skills')
+                .populate('transactions.to')
+                .populate('transactions.from')
+                .populate('transactions.project')
                 .exec((err, user) => {
                     if (err) {
                         res.code = 400;
@@ -214,6 +217,9 @@ module.exports = {
                             ,
                             {new: true})
                             .populate('skills')
+                            .populate('transactions.to')
+                            .populate('transactions.from')
+                            .populate('transactions.project')
                             .exec((err, user) => {
                                 if (err) {
                                     res.code = 400;
