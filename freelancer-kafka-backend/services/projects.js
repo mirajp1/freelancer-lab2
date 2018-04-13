@@ -44,7 +44,7 @@ module.exports = {
                 console.log(project);
                 if(err){
                     res.code = 400;
-                    res.value = {error:error};
+                    res.value = {error:err};
                     cb(null,res);
                 }
                 else if(project){

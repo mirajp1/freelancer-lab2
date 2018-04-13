@@ -12,6 +12,8 @@ import Home from "./components/Home";
 import Project from "./components/Project";
 import DashBoard from "./components/DashBoard";
 
+import * as API from './api/auth';
+
 class App extends Component {
 
     constructor(){
@@ -121,6 +123,7 @@ class App extends Component {
     }
 
     logout(){
+        API.logout();
         localStorage.removeItem('userId');
         this.props.history.push('/login');
     }

@@ -23,6 +23,25 @@ export const login = (payload) =>{
         });
 }
 
+export const logout = () =>{
+    return fetch("/auth/logout", {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+
+        },
+        credentials:'include',
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
 export const signup = (payload) =>{
 
     return fetch("/auth/signup", {

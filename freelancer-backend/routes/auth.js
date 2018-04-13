@@ -90,9 +90,9 @@ router.post('/logout', (req, res) => {
     if (req.user) {
         req.session.destroy()
         res.clearCookie('connect.sid') // clean up!
-        return res.json({ msg: 'logging you out' })
+        return res.json({ message: 'logging you out' })
     } else {
-        return res.json({ msg: 'no user to log out!' })
+        return res.json({ message: 'no user to log out!' })
     }
 })
 

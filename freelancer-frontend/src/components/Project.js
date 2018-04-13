@@ -404,7 +404,7 @@ class Project extends Component{
                 </div>}
 
                 <br/>
-                
+
 
                 <BidderList bids={bids? bids :[]} allowHire={this.state.allowHire} handleHire={this.hire}/>
 
