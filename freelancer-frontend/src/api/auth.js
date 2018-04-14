@@ -296,9 +296,9 @@ export const hire = (token,data,params) =>{
 }
 
 
-export const getAllOpenProjects = (token) =>{
+export const getAllOpenProjects = (token,query) =>{
 
-    return fetch("/api/projects/all/open", {
+    return fetch("/api/projects/all/open?"+query, {
         method: 'GET',
         headers: {
             ...headers,
@@ -316,9 +316,9 @@ export const getAllOpenProjects = (token) =>{
         });
 }
 
-export const getFreelancerProjects = (token) =>{
+export const getFreelancerProjects = (token,query) =>{
 
-    return fetch("/api/projects/all/bidded", {
+    return fetch("/api/projects/all/bidded?"+query, {
         method: 'GET',
         headers: {
             ...headers,
@@ -336,9 +336,9 @@ export const getFreelancerProjects = (token) =>{
         });
 }
 
-export const getEmployerProjects = (token) =>{
+export const getEmployerProjects = (token,query) =>{
 
-    return fetch("/api/projects/all/created", {
+    return fetch("/api/projects/all/created?"+query, {
         method: 'GET',
         headers: {
             ...headers,
@@ -356,9 +356,9 @@ export const getEmployerProjects = (token) =>{
         });
 }
 
-export const getRelevantProjects = (token) =>{
+export const getRelevantProjects = (token,query) =>{
 
-    return fetch("/api/projects/all/relevant", {
+    return fetch("/api/projects/all/relevant?"+query, {
         method: 'GET',
         headers: {
             ...headers,

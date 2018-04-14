@@ -163,7 +163,7 @@ module.exports = {
     },
     retrieveAll(req, res) {
 
-        kafka.make_request('retrieve_all_open_projects',{body:req.body}, function(err,results){
+        kafka.make_request('retrieve_all_open_projects',{body:req.body,query:req.query}, function(err,results){
             console.log('in retrieve_all_open_projects cb');
             console.log(results);
             if(err){
@@ -206,7 +206,7 @@ module.exports = {
     retrieveAllBidded(req, res) {
         console.log(req.user.id);
 
-        kafka.make_request('retrieve_all_bidded_projects',{body:req.body,user:req.user}, function(err,results){
+        kafka.make_request('retrieve_all_bidded_projects',{body:req.body,user:req.user,query:req.query}, function(err,results){
             console.log('in retrieve_all_bidded_projects cb');
             console.log(results);
             if(err){
@@ -250,7 +250,7 @@ module.exports = {
     retrieveAllCreated(req, res) {
         console.log(req.user.id);
 
-        kafka.make_request('retrieve_all_created_projects',{body:req.body,user:req.user}, function(err,results){
+        kafka.make_request('retrieve_all_created_projects',{body:req.body,user:req.user,query:req.query}, function(err,results){
             console.log('in retrieve_all_created_projects cb');
             console.log(results);
             if(err){
@@ -292,7 +292,7 @@ module.exports = {
     },
     retrieveAllRelevant(req, res) {
 
-        kafka.make_request('retrieve_all_relevant_projects', {body: req.body,user:req.user}, function (err, results) {
+        kafka.make_request('retrieve_all_relevant_projects', {body: req.body,user:req.user,query:req.query}, function (err, results) {
             console.log('in retrieve_all_relevant_projects cb');
             console.log(results);
             if (err) {

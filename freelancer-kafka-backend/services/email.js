@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
     from: 'miraj4footprints@gmail.com',
-    subject: 'You have been hired!',
+    subject: 'Freelancer.com | You have been hired!',
 };
 
 
@@ -18,6 +18,14 @@ module.exports.sendMail = function (to, text,cb) {
     mailOptions.to=to;
     mailOptions.text=text;
 
-    transporter.sendMail(to,text,cb);
+    console.log(mailOptions);
+
+    transporter.sendMail(mailOptions,function(error,info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+    });
 
 }

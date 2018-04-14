@@ -243,15 +243,13 @@ module.exports = {
                                             res.value = project;
                                             cb(null, res);
 
-                                            let to = project.freelancer.email;
-                                            let text="You have been hired for the project: "+project.name;
-                                            emailer.sendMail(to,text,(err,info)=>{
-                                                if (error) {
-                                                    console.log(error);
-                                                } else {
-                                                    console.log('Email sent: ' + info.response);
-                                                }
-                                            })
+                                            User.findOne({_id:req.body.userId})
+                                                .then(user=>{
+                                                    let to = user.email;
+                                                    let text="Hi, "+user.name+"\nYou have been hired for the project: "+project.name;
+                                                    emailer.sendMail(to,text);
+                                                })
+
 
                                         }
                                         else {
@@ -279,13 +277,16 @@ module.exports = {
 
     },
     retrieveAllOpen(req, cb) {
-
         let res = {}
-        Project.find(
-            {
-                status:"OPEN"
-            }
-            )
+        console.log(req.query)
+        let query={}
+        query.status="OPEN";
+        if(req.query && req.query.name){
+            let regex = new RegExp(req.query.name, "i")
+            query.name=regex
+        }
+
+        Project.find(query)
             .populate('creator')
             .populate('skills')
             .populate('freelancer')
@@ -314,12 +315,23 @@ module.exports = {
     retrieveAllBidded(req, cb) {
         console.log(req.user);
 
+        console.log(req.query)
+        let query={
+            "bids.bidder":req.user._id
+        }
+        if(req.query && req.query.name){
+            let regex = new RegExp(req.query.name, "i")
+            query.name=regex
+        }
+
+        if(req.query && req.query.status){
+            let regex = new RegExp(req.query.status, "i")
+            query.status=regex
+        }
+
+
         let res = {}
-        Project.find(
-            {
-                "bids.bidder":req.user._id
-            }
-        )
+        Project.find(query)
             .lean(true)
             .populate('creator')
             .populate('skills')
@@ -352,12 +364,22 @@ module.exports = {
     retrieveAllCreated(req, cb) {
         console.log(req.user);
 
+        console.log(req.query)
+        let query={
+            "creator":req.user._id
+        }
+        if(req.query && req.query.name){
+            let regex = new RegExp(req.query.name, "i")
+            query.name=regex
+        }
+
+        if(req.query && req.query.status){
+            let regex = new RegExp(req.query.status, "i")
+            query.status=regex
+        }
+
         let res = {}
-        Project.find(
-            {
-                "creator":req.user._id
-            }
-        )
+        Project.find(query)
             .lean(true)
             .populate('creator')
             .populate('skills')
@@ -390,6 +412,12 @@ module.exports = {
         console.log(req.user);
 
         let res = {}
+
+        let query={}
+        if(req.query && req.query.name){
+            let regex = new RegExp(req.query.name, "i")
+            query.name=regex
+        }
 
         // let user_skills=[mongoose.Types.ObjectId('5ac7cf2e734d1d2fb54281f8')]
         User.findOne({_id:req.user._id})
@@ -424,7 +452,9 @@ module.exports = {
                             projects.forEach(function(item){
                                 ids.push(item._id)
                             })
-                            Project.find({'_id': {$in:ids}  })
+                            query._id={$in:ids};
+
+                            Project.find(query)
                                 .lean(true)
                                 .populate('creator')
                                 .populate('skills')

@@ -8,6 +8,8 @@ class TransactionItem extends Component {
     render() {
 
         const {to,from,project,amount,type} = this.props.details;
+        const userId = localStorage.getItem('userId');
+
         return (
 
 
@@ -17,7 +19,7 @@ class TransactionItem extends Component {
 
                     <div className="row">
                         <div className="col-md-12">
-                            <div><a href="#">{to?to.name:"-"}</a></div>
+                            <div><a href="#">{to?(to._id===userId ? "You":to.name):"-"}</a></div>
                         </div>
                     </div>
 
@@ -25,7 +27,7 @@ class TransactionItem extends Component {
 
                 <div className="col-md-2">
 
-                    <a className="project-bid pull-right">{from? from.name:"-"}</a>
+                    <a className="project-bid pull-right">{from?(from._id===userId ? "You":from.name):"-"}</a>
 
                 </div>
 

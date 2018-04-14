@@ -341,11 +341,11 @@ export function submitSolution(token,data,params) {
 
 }
 
-export function fetchAllOpenProjects(token) {
+export function fetchAllOpenProjects(token,query) {
 
     console.log("fetch all open project:");
     return function(dispatch) {
-        API.getAllOpenProjects(token)
+        API.getAllOpenProjects(token,query)
             .then(res => {
                 console.log("response open projecst:");
                 console.log(res);
@@ -371,11 +371,11 @@ export function fetchAllOpenProjects(token) {
 
 }
 
-export function fetchFreelancerProjects(token) {
+export function fetchFreelancerProjects(token,query) {
 
     console.log("fetch all freelancer project:");
     return function(dispatch) {
-        API.getFreelancerProjects(token)
+        API.getFreelancerProjects(token,query)
             .then(res => {
                 console.log(res);
 
@@ -400,11 +400,11 @@ export function fetchFreelancerProjects(token) {
 
 }
 
-export function fetchEmployerProjects(token) {
+export function fetchEmployerProjects(token,query) {
 
     console.log("fetch all employer projects:");
     return function(dispatch) {
-        API.getEmployerProjects(token)
+        API.getEmployerProjects(token,query)
             .then(res => {
                 console.log(res);
 
@@ -429,11 +429,11 @@ export function fetchEmployerProjects(token) {
 
 }
 
-export function fetchRelevantProjects(token) {
+export function fetchRelevantProjects(token,query) {
 
     console.log("fetch all relevant projects:");
     return function(dispatch) {
-        API.getRelevantProjects(token)
+        API.getRelevantProjects(token,query)
             .then(res => {
                 console.log(res);
 
