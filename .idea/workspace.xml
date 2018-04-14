@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43d49fd-7662-4dc7-a574-656aff3ad448" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/freelancer-backend/bin/www" afterPath="$PROJECT_DIR$/freelancer-backend/bin/www" />
       <change beforePath="$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js" afterPath="$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -81,17 +80,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connection.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Connection.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/freelancer-backend/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
@@ -124,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>created</find>
       <find>bidNo</find>
       <find>bids</find>
       <find>$</find>
@@ -154,6 +152,7 @@
       <find>make</find>
       <find>PieC</find>
       <find>seq</find>
+      <find>models</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -210,8 +209,8 @@
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Home.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/Wallet.js" />
         <option value="$PROJECT_DIR$/freelancer-frontend/src/components/TransactionItem.js" />
-        <option value="$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/freelancer-backend/bin/www" />
+        <option value="$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js" />
       </list>
     </option>
   </component>
@@ -410,12 +409,12 @@
       <workItem from="1523216853100" duration="14017000" />
       <workItem from="1523299055098" duration="6757000" />
       <workItem from="1523308839130" duration="22869000" />
-      <workItem from="1523643069625" duration="31971000" />
+      <workItem from="1523643069625" duration="32582000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157342000" />
+    <option name="totallyTimeSpent" value="157953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1313" height="780" extended-state="6" />
@@ -839,18 +838,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freelancer-backend/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freelancer-kafka-backend/kafka/Connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
           <folding />
         </state>
       </provider>
