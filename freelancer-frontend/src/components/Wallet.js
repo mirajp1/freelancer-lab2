@@ -54,16 +54,9 @@ class Wallet extends Component {
         if(this.state.pie.length===0) {
             console.log("pie data calculation")
             let data = [];
-            let incoming = {
-                title: "Incoming",
-                color: "#22594e",
-                value: 0
-            }
-            let outgoing = {
-                title: "Outgoing",
-                color: "#a1d9ce",
-                value: 0
-            }
+            let incoming = {title: "Incoming", color: "#59141b", value: 0}
+            let outgoing = {title: "Outgoing", color: "#d90018", value: 0}
+
             if (this.props.profile && this.props.profile.transactions) {
                 let userId = localStorage.getItem('userId');
                 this.props.profile.transactions.map((item) => {
@@ -170,7 +163,7 @@ class Wallet extends Component {
 
                     </div>
 
-                    <div className=" col-md-offset-2 col-md-2">
+                    <div className=" col-md-2">
                         <PieChart  data={this.state.pie}/>
 
                         <br/>

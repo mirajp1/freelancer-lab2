@@ -95,6 +95,7 @@ module.exports = {
         else{
 
             console.log(req.file);
+            let rskills = req.body.skills ? req.body.skills.split(','):[];
             let filePath=""
             if(req.file){
                 filePath="/uploads/project/"+req.file.filename;
@@ -112,7 +113,7 @@ module.exports = {
                 .then(project => {
 
                     Skill.find({
-                        'name': { $in: req.body.skills}
+                        'name': { $in: rskills}
                     })
                         .then(skills=>{
                             Project.findOneAndUpdate({_id:project._id},{$push:{skills:skills}},{"new":true})
@@ -424,12 +425,12 @@ module.exports = {
             .then(user=>{
                 Project.aggregate(
                     [
-                        { "$match": { "skills.0": { "$exists": true } } },
+                        { "$match": { "skills.2": { "$exists": true } } },
                         { "$redact": {
                                 "$cond": [
                                     { "$gte": [
                                             { "$size": { "$setIntersection": [ "$skills", user.skills ] } },
-                                            1
+                                            3
                                         ]},
                                     "$$KEEP",
                                     "$$PRUNE"

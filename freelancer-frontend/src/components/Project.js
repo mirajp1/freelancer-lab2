@@ -23,6 +23,18 @@ class Project extends Component{
         this.hire=this.hire.bind(this);
         this.makePayment=this.makePayment.bind(this);
         this.submitSolution=this.submitSolution.bind(this);
+        this.showError=this.showError.bind(this);
+    }
+
+    showError(){
+        console.log(this.props.error);
+        if(this.props.error && this.props.error.length>0){
+            return (
+                <div className="alert alert-danger" role="alert">{this.props.error}</div>
+
+
+            );
+        }
     }
 
     componentDidMount(){
@@ -303,6 +315,7 @@ class Project extends Component{
                     <br/>
                     <br/>
                     <div className="col-md-12 project-data">
+                        {this.showError()}
 
                         <div className="row">
                             <div className="col-md-6">

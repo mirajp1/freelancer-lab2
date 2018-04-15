@@ -11,7 +11,7 @@ class ProjectList extends Component {
         super(props);
         this.state = {
             activePage: 1,
-            itemsPerPage:2
+            itemsPerPage:10
         };
         this.handlePageChange=this.handlePageChange.bind(this)
     }
@@ -32,6 +32,18 @@ class ProjectList extends Component {
         return (
 
                 <div>
+
+                    <div className="row">
+                        <div className="pull-right">
+                        <Pagination
+                            activePage={this.state.activePage}
+                            itemsCountPerPage ={this.state.itemsPerPage}
+                            totalItemsCount={this.props.projects.length}
+                            pageRangeDisplayed={10}
+                            onChange={this.handlePageChange}
+                        />
+                        </div>
+                    </div>
 
                     <div className="row table-header">
 
@@ -62,15 +74,7 @@ class ProjectList extends Component {
                       return (<ProjectItem key={key} details={item}/>);
                     } )}
 
-                    <div>
-                        <Pagination
-                            activePage={this.state.activePage}
-                            itemsCountPerPage ={this.state.itemsPerPage}
-                            totalItemsCount={this.props.projects.length}
-                            pageRangeDisplayed={10}
-                            onChange={this.handlePageChange}
-                        />
-                    </div>
+
 
                 </div>
 

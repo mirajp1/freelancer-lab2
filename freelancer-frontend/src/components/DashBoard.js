@@ -104,7 +104,6 @@ class DashBoard extends Component {
                     </div>
                 </div>
 
-                <br/>
 
                 {this.state.show == "freelancer" && <ProjectFreelancerDashboardList projects={this.props.fprojects ? this.props.fprojects : []}/> }
                 {this.state.show == "employer" && <ProjectDashboardList projects={this.props.eprojects ? this.props.eprojects : []}/> }

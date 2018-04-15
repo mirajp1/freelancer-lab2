@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var transactionSchema = new Schema({
     from: { type: Schema.Types.ObjectId, ref: 'User' },
     to: { type: Schema.Types.ObjectId, ref: 'User' },
-    project:{ type: Schema.Types.ObjectId, ref: 'Project' },
+    project:{ type: Schema.Types.ObjectId, ref: 'User' },
     amount:Number,
     type: {
         type:String,

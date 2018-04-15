@@ -40,7 +40,7 @@ class AddProject extends Component{
         formData.append('description', this.state.description);
         formData.append('budget_range', this.state.budget_range);
         formData.append('file', this.state.file);
-        formData.append('skills', this.state.skills.split(','));
+        formData.append('skills', this.state.skills);
 
         var project ={
             name:this.state.name,

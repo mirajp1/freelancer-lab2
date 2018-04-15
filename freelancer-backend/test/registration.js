@@ -20,7 +20,7 @@ describe('API endpoint /auth/signup', function() {
         return chai.request(app)
             .post('/auth/signup')
             .send({
-                email:"tesfsdfearef@gmail.com",
+                email:"tesfef@gmail.com",
                 password:"test121212",
                 userType:"work"
             })

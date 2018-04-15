@@ -19,9 +19,9 @@ describe('API endpoint /api/profile', function() {
     it('should return profile data', function() {
         return chai.request(app)
             .get('/api/profile/1')
-            .set('Authorization','JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxNDAwNTk4LCJleHAiOjE1MjE0ODY5OTh9.JsDwrJUgS3JzGiRkdL0KkmBvo_so9p13BhC5mHUnMWc')
+            .set('Cookie','connect.sid=s%3AHdHPzLAs4W9ebMuS1y1oVY_ugB64IoLd.oSfjgWv222L18JZLDqF8wAcH3y99I5zaYHUoNMA0APk')
             .then(function(res) {
-                expect(res).to.have.status(201);
+                expect(res).to.have.status(200);
                 expect(res).to.be.json;
                 expect(res.body).to.be.an('object');
                 expect(res.body.name).to.be.an('string');
@@ -32,12 +32,12 @@ describe('API endpoint /api/profile', function() {
     it('should update name', function() {
         return chai.request(app)
             .put('/api/profile')
-            .set('Authorization','JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxNDAwNTk4LCJleHAiOjE1MjE0ODY5OTh9.JsDwrJUgS3JzGiRkdL0KkmBvo_so9p13BhC5mHUnMWc')
+            .set('Cookie','connect.sid=s%3AHdHPzLAs4W9ebMuS1y1oVY_ugB64IoLd.oSfjgWv222L18JZLDqF8wAcH3y99I5zaYHUoNMA0APk')
             .send({
                 name:'Miraj Patel1'
             })
             .then(function(res) {
-                expect(res).to.have.status(201);
+                expect(res).to.have.status(200);
                 expect(res).to.be.json;
                 expect(res.body).to.be.an('object');
                 expect(res.body.name).to.equal('Miraj Patel1');

@@ -19,7 +19,7 @@ describe('API endpoint /api/projects for home', function() {
     it('should return profile data', function() {
         return chai.request(app)
             .get('/api/projects/all/open')
-            .set('Authorization','JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxNDAwNTk4LCJleHAiOjE1MjE0ODY5OTh9.JsDwrJUgS3JzGiRkdL0KkmBvo_so9p13BhC5mHUnMWc')
+            .set('Cookie','connect.sid=s%3AHdHPzLAs4W9ebMuS1y1oVY_ugB64IoLd.oSfjgWv222L18JZLDqF8wAcH3y99I5zaYHUoNMA0APk')
             .then(function(res) {
                 expect(res).to.have.status(201);
                 expect(res).to.be.json;

@@ -16,12 +16,12 @@ describe('API endpoint /auth/login', function() {
 
     });
 
-    it('should return token', function() {
+    it('should return valid session', function() {
         return chai.request(app)
             .post('/auth/login')
             .send({
-                email:"test@gmail.com",
-                password:"test"
+                email:"test@test.com",
+                password:"test1234"
             })
             .then(function(res) {
                 expect(res).to.have.status(200);
@@ -45,7 +45,7 @@ describe('API endpoint /auth/login', function() {
                 expect(res.body.error).to.be.an('string');
             })
             .catch(function(err) {
-                    expect(err).to.have.status(400);
+                    expect(err).to.have.status(401);
             });
     });
 
