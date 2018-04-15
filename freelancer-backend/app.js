@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var api = require('./routes/api');
 var config = require('./config/config.json');
+var kafka = require('./kafka/Connection');
 
 
 // var hookJWTStrategy = require('./config/passport');

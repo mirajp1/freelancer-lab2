@@ -25,7 +25,7 @@ var retrieveRelevantProjects = new connection().getConsumer('retrieve_all_releva
 var submitSolution = new connection().getConsumer('submit_solution_topic');
 var producer = new connection().getProducer();
 
-mongoose.connect('mongodb://freelancer273:freelancer273@ds135619.mlab.com:35619/freelancer-lab2?poolSize=4');
+mongoose.connect('mongodb://freelancer273:freelancer273@ds135619.mlab.com:35619/freelancer-lab2');
 mongoose.connection.on('connecting', function(){
     console.log("trying to establish a connection to mongo");
 });

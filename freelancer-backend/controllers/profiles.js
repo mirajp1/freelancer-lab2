@@ -1,6 +1,3 @@
-const Profile = require('../models').Profile;
-const User = require('../models').User;
-const Skill = require('../models').Skill;
 const kafka = require('../kafka/client');
 module.exports = {
     retrieve(req, res) {

@@ -1,9 +1,3 @@
-const Project = require('../models').Project;
-const User = require('../models').User;
-const Skill = require('../models').Skill;
-const Bid = require('../models').Bid;
-const Profile = require('../models').Profile;
-const sequelize =require( "sequelize");
 const kafka = require('../kafka/client')
 
 module.exports = {
